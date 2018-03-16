@@ -1,0 +1,13 @@
+{
+  "description": "个人微信小程序",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wx8752d064d4c8bca6",
+  "projectname": "applets",
+  "miniprogramRoot": "./dist"
+}
