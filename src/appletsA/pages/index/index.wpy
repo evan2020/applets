@@ -9,7 +9,14 @@
 
 <script>
   import wepy from 'wepy'
- 
+  import Counter from 'counter' // alias example
+  import moduleA from 'module-a' // aliasFields ignore module example
+  import Toast from 'wepy-com-toast'
+  import testMixin from '../mixins/test'
+
+  console.log('moduleA ignored: ', moduleA) // => moduleA ignored: {}
+
+
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: 'test'
@@ -18,6 +25,7 @@
       
     }
 
+    mixins = [testMixin]
 
     data = {
       
