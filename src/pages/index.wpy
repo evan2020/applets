@@ -7,7 +7,7 @@
 </style>
 <template>
   <view class="container">
-    <view class="test_less">test_less</view>
+    <view class="test_less">修改git全局配置</view>
   </view>
 </template>
 
@@ -16,7 +16,7 @@
  
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: 'applets'
     }
     components = {
       
