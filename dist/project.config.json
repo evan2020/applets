@@ -30,12 +30,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "信息",
-					"pathName": "pages/info"
+					"pathName": "pages/info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "日志",
+					"pathName": "pages/log"
 				}
 			]
 		}
