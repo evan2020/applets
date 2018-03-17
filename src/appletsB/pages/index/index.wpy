@@ -1,18 +1,22 @@
 <style lang="less">
-  
+  .container{
+    .test_less{
+      color:pink;
+    }
+  }
 </style>
 <template>
   <view class="container">
-    1
+    <view class="test_less">test less</view>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
-  import Counter from 'counter' // alias example
+  // import Counter from 'counter' // alias example
   import moduleA from 'module-a' // aliasFields ignore module example
   import Toast from 'wepy-com-toast'
-  import testMixin from '../mixins/test'
+  // import testMixin from '../mixins/test'
 
   console.log('moduleA ignored: ', moduleA) // => moduleA ignored: {}
 

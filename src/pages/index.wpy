@@ -1,9 +1,13 @@
 <style lang="less">
-  
+  .container{
+    .test_less{
+      color:blue;
+    }
+  }
 </style>
 <template>
   <view class="container">
-    1
+    <view class="test_less">test_less</view>
   </view>
 </template>
 
