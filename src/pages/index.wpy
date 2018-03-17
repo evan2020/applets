@@ -1,59 +1,135 @@
 <style lang="scss">
 @import '../components/zancss/btn.scss';
-  .container{
-    .test_less{
-      color:blue;
+.container {
+  .slide-image {
+    width: 750rpx;
+  }
+
+  .nineBox {
+    display: flex;
+    flex-direction: column;
+    .row {
+      width: 750rpx;
+      height: 250rpx;
+      display: flex;
+      flex-direction: row;
+      view {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        image {
+          width: 100rpx;
+          height: 100rpx;
+        }
+        text {
+          margin-top: 10rpx;
+          font-size: 14px;
+        }
+      }
     }
   }
+}
 </style>
 <template>
   <view class="container">
-    <view class="test_less">修改git全局配置</view>
-     <view class="doc-title zan-hairline--bottom">BUTTON</view>
 
-    <view class="zan-panel-title">普通按钮</view>
-    <view class="zan-panel">
-      <view class="zan-btns">
-        <button class="zan-btn">取消订单</button>
-        <button class="zan-btn zan-btn--primary">确认付款</button>
-        <button class="zan-btn zan-btn--danger">确认付款</button>
-        <button class="zan-btn zan-btn--warn">确认付款</button>
-      </view>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <repeat for="{{imgUrls}}" key="index" index="index" item="item">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </repeat>
+</swiper>
+
+<view class='nineBox'>
+
+  <view class='row'>
+
+    <view bindtap='position'>
+      <image src='/icon/01.png'></image>
+      <text>防传销</text>
     </view>
+
+    <view bindtap='SystemInfo'>
+      <image src='/icon/02.png'></image>
+      <text>系统信息</text>
+    </view>
+    <view bindtap='netWork'>
+      <image src='/icon/03.png'></image>
+      <text>网络检测</text>
+    </view>
+  </view>
+
+  <view class='row'>
+    <view bindtap='ClipboardData'>
+      <image src='/icon/04.png'></image>
+      <text>数据追踪</text>
+    </view>
+
+    <view bindtap='Authentication'>
+      <image src='/icon/05.png'></image>
+      <text>生物识别</text>
+    </view>
+
+
+    <view bindtap='model'>
+      <image src='/icon/06.png'></image>
+      <text>模版消息</text>
+    </view>
+  </view>
+
+  <view class='row'>
+    <view>
+      <image src='/icon/07.png'></image>
+      <text>AI智能</text>
+    </view>
+
+    <view>
+      <image src='/icon/08.png'></image>
+      <text>AR增强现实</text>
+    </view>
+    <view>
+      <image src='/icon/09.png'></image>
+      <text>VR虚拟实境</text>
+    </view>
+  </view>
+
+</view>
+
   </view>
 </template>
 
 <script>
-  import wepy from 'wepy'
- 
-  export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: 'applets'
-    }
-    components = {
-      
-    }
+import wepy from 'wepy';
 
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '首页'
+  };
+  components = {};
 
-    data = {
-      
-    }
+  data = {
+    imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1500
+  };
 
-    computed = {
-      
-    }
+  computed = {};
 
-    methods = {
-      
-    }
+  methods = {};
 
-    events = {
-      
-    }
+  events = {};
 
-    onLoad() {
-      let self = this
-      
-    }
+  onLoad() {
+    let self = this;
   }
+}
 </script>

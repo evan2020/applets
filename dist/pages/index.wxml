@@ -1,15 +1,67 @@
 
   <view class="container">
-    <view class="test_less">修改git全局配置</view>
-     <view class="doc-title zan-hairline--bottom">BUTTON</view>
 
-    <view class="zan-panel-title">普通按钮</view>
-    <view class="zan-panel">
-      <view class="zan-btns">
-        <button class="zan-btn">取消订单</button>
-        <button class="zan-btn zan-btn--primary">确认付款</button>
-        <button class="zan-btn zan-btn--danger">确认付款</button>
-        <button class="zan-btn zan-btn--warn">确认付款</button>
-      </view>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="nineBox">
+
+  <view class="row">
+
+    <view bindtap="position">
+      <image src="/icon/01.png"/>
+      <text>防传销</text>
     </view>
+
+    <view bindtap="SystemInfo">
+      <image src="/icon/02.png"/>
+      <text>系统信息</text>
+    </view>
+    <view bindtap="netWork">
+      <image src="/icon/03.png"/>
+      <text>网络检测</text>
+    </view>
+  </view>
+
+  <view class="row">
+    <view bindtap="ClipboardData">
+      <image src="/icon/04.png"/>
+      <text>数据追踪</text>
+    </view>
+
+    <view bindtap="Authentication">
+      <image src="/icon/05.png"/>
+      <text>生物识别</text>
+    </view>
+
+
+    <view bindtap="model">
+      <image src="/icon/06.png"/>
+      <text>模版消息</text>
+    </view>
+  </view>
+
+  <view class="row">
+    <view>
+      <image src="/icon/07.png"/>
+      <text>AI智能</text>
+    </view>
+
+    <view>
+      <image src="/icon/08.png"/>
+      <text>AR增强现实</text>
+    </view>
+    <view>
+      <image src="/icon/09.png"/>
+      <text>VR虚拟实境</text>
+    </view>
+  </view>
+
+</view>
+
   </view>

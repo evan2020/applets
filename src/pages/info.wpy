@@ -1,0 +1,123 @@
+<style lang="scss">
+@import '../components/zancss/panel.scss';
+@import '../components/zancss/cell.scss';
+@import '../components/zancss/icon.scss';
+.container {
+}
+</style>
+<template>
+  <view class="container">
+
+    <view class="zan-panel">
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+    </view>
+
+    <view class="zan-panel">
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+    </view>
+
+    <view class="zan-panel">
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+    </view>
+
+    <view class="zan-panel">
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
+            <view class="zan-cell__bd">单行列表</view>
+            <view class="zan-cell__ft">详细信息</view>
+        </view>
+
+    </view>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '信息'
+  };
+  components = {};
+
+  data = {
+    info: ''
+  };
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad() {}
+}
+</script>
