@@ -1,0 +1,76 @@
+<style lang="less">
+.container {
+  .test_less {
+    color: pink;
+  }
+}
+</style>
+<template>
+  <view class="container">
+    <view class="test_less">{{text}}</view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '文字逐行显示'
+  };
+  components = {};
+
+  data = {
+    //文字的全部内容
+    content: '这是一个demo，测试逐行显示文字（打字机效果）',
+    //要显示的文字内容
+    text: '',
+    //初始文字长度
+    len: 1,
+    //定时器
+    timer: null
+  };
+
+  computed = {};
+
+  textShow() {
+    let self = this;
+    let len = self.len;
+    let textLen = self.content.length;
+    let str = self.content;
+
+    str = str.substr(0, len);
+    self.text = str;
+    len++;
+    self.len = len;
+    self.$apply();
+
+    if (len > textLen) {
+
+      //循环显示
+      // self.len = 0;
+
+      //清除定时器（让内容只显示一次）
+      clearTimeout(self.timer);
+
+    }
+
+    // 设置每隔多久显示一个字（文字显示速度）
+    self.timer = setTimeout(() => {
+      self.textShow();
+    }, 300);
+  }
+
+  methods = {};
+
+  events = {};
+
+  onLoad() {
+    let self = this;
+  }
+  onShow() {
+    let self = this;
+    self.textShow();
+  }
+}
+</script>

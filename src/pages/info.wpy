@@ -10,10 +10,10 @@
 
     <view class="zan-panel">
 
-        <view class="zan-cell">
+        <view class="zan-cell" @tap="letter"> 
             <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
+            <view class="zan-cell__bd">信件</view>
+            <view class="zan-cell__ft">逐字显示效果</view>
         </view>
 
         <view class="zan-cell">
@@ -113,8 +113,16 @@ export default class Index extends wepy.page {
   };
 
   computed = {};
+  
 
-  methods = {};
+  methods = {
+    letter() {
+      console.log('letter');
+      wx.navigateTo({
+        url: '/appletsA/pages/text/text'
+      });
+    }
+  };
 
   events = {};
 

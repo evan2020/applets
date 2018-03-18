@@ -31,6 +31,7 @@
     }
   }
 }
+
 </style>
 <template>
   <view class="container">

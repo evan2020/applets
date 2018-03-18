@@ -3,7 +3,7 @@
 </style>
 <template>
   <view class="container">
-    1
+    2
   </view>
 </template>
 
@@ -17,8 +17,6 @@
     components = {
       
     }
-
-    mixins = [testMixin]
 
     data = {
       

@@ -22,11 +22,17 @@ export default class extends wepy.app {
     subPackages: [
       {
         root: 'appletsA',
-        pages: ['pages/index/index']
+        pages: [
+          'pages/index/index',
+          'pages/text/text',
+        ]
       },
       {
         root: 'appletsB',
-        pages: ['pages/index/index']
+        pages: [
+          'pages/index/index',
+          'pages/text/text',
+          ]
       }
     ],
     tabBar: {
