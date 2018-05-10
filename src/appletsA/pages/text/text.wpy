@@ -46,13 +46,11 @@ export default class Index extends wepy.page {
     self.$apply();
 
     if (len > textLen) {
-
       //循环显示
       // self.len = 0;
 
       //清除定时器（让内容只显示一次）
       clearTimeout(self.timer);
-
     }
 
     // 设置每隔多久显示一个字（文字显示速度）
@@ -61,16 +59,46 @@ export default class Index extends wepy.page {
     }, 300);
   }
 
-  methods = {};
+  
+
+  methods = {
+    onShareAppMessage: function(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target);
+      }
+      return {
+        title: '自定义转发标题',
+        path: '/appletsA/pages/text/text?content=这是传递的参数进口量打算离开房间看电视进，口量圣诞节疯狂乱收费宽带缴费快乐十分离开就是了对方阿来得及，撒娇的快乐撒娇的，大家阿拉斯加的卡拉是假的，打瞌睡肯德基卡死了就打开啦，大撒即可来得快垃圾筐，大街上的快乐就打算离开大叔大婶，大撒娇的快乐撒娇的可垃圾的来看撒娇空间的，打手机打卡时间看撒娇的，打手机打卡机的卡拉是经典款垃圾死了肯德基啊，打手机打开撒娇的快乐撒娇了',
+        success: function(res) {
+          // 转发成功
+        },
+        fail: function(res) {
+          // 转发失败
+        }
+      };
+    }
+
+    
+  };
 
   events = {};
 
-  onLoad() {
+  onLoad(options) {
     let self = this;
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+    let content=options.content;
+    if(content){
+      this.content=content;
+    }
+    
   }
   onShow() {
     let self = this;
     self.textShow();
+    
   }
 }
 </script>

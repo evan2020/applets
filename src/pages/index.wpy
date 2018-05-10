@@ -9,19 +9,32 @@
     display: flex;
     flex-direction: column;
     .row {
-      width: 750rpx;
-      height: 250rpx;
+      width: 100%;
+      height: 300rpx;
       display: flex;
       flex-direction: row;
+      margin-top: 10rpx;
+
       view {
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        &.left {
+          padding-left: 30rpx;
+          padding-right: 15rpx;
+        }
+        &.right {
+          padding-left: 15rpx;
+          padding-right: 30rpx;
+        }
+
         image {
-          width: 100rpx;
-          height: 100rpx;
+          width: 100%;
+          box-shadow: 4px 2px 2px #d6d6d6;
+          // height: 100rpx;
         }
         text {
           margin-top: 10rpx;
@@ -31,7 +44,6 @@
     }
   }
 }
-
 </style>
 <template>
   <view class="container">
@@ -48,54 +60,50 @@
 
   <view class='row'>
 
-    <view bindtap='position'>
-      <image src='/icon/01.png'></image>
-      <text>防传销</text>
+    <view bindtap='position' class="left">
+      <image src='https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D400/sign=721f202b30292df597c3ad158c305ce2/6609c93d70cf3bc779cc28e8db00baa1cc112ae2.jpg'></image>
+      <text>母亲节</text>
     </view>
 
-    <view bindtap='SystemInfo'>
-      <image src='/icon/02.png'></image>
-      <text>系统信息</text>
+    <view bindtap='position' class="right">
+      <image src='https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg'></image>
+      <text>父亲节</text>
     </view>
-    <view bindtap='netWork'>
-      <image src='/icon/03.png'></image>
-      <text>网络检测</text>
-    </view>
+
+    
   </view>
 
   <view class='row'>
-    <view bindtap='ClipboardData'>
-      <image src='/icon/04.png'></image>
-      <text>数据追踪</text>
+
+    <view bindtap='position' class="left">
+      <image src='https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg'></image>
+      <text>520</text>
     </view>
 
-    <view bindtap='Authentication'>
-      <image src='/icon/05.png'></image>
-      <text>生物识别</text>
+    <view bindtap='position' class="right">
+      <image src='https://om83cysj8.qnssl.com/121F2NC-0.jpg'></image>
+      <text>端午节</text>
     </view>
 
-
-    <view bindtap='model'>
-      <image src='/icon/06.png'></image>
-      <text>模版消息</text>
-    </view>
+    
   </view>
 
   <view class='row'>
-    <view>
-      <image src='/icon/07.png'></image>
-      <text>AI智能</text>
+
+    <view bindtap='position' class="left">
+      <image src='https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg'></image>
+      <text>儿童节</text>
     </view>
 
-    <view>
-      <image src='/icon/08.png'></image>
-      <text>AR增强现实</text>
+    <view bindtap='position' class="right">
+      <image src='https://om83cysj8.qnssl.com/71244679da9054cc53ee98bb54a872b62.jpg'></image>
+      <text>七夕</text>
     </view>
-    <view>
-      <image src='/icon/09.png'></image>
-      <text>VR虚拟实境</text>
-    </view>
+
+    
   </view>
+
+ 
 
 </view>
 
@@ -107,7 +115,7 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '沙漏'
   };
   components = {};
 
