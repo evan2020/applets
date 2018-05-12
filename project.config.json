@@ -28,12 +28,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
 					"name": "卡片页面",
-					"pathName": "pages/details/details"
+					"pathName": "pages/details/details",
+					"query": ""
 				}
 			]
 		}
