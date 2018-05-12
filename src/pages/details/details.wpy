@@ -46,16 +46,17 @@
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
       <view class="content">
         <view class=“text”>
-          <text>家是温暖港湾</text>
-        <text>母爱是甜蜜小船</text>
-        <text>无论投身地北</text>
-        <text>还是浪迹天南</text>
-        <text>无论繁忙劳碌</text>
+          <text>父母在，不远游</text>
+        <text>不在你们身边的时候</text>
+        <text>希望你们能照顾好自己</text>
+         <text>无论繁忙劳碌</text>
         <text>还是游玩休闲</text>
-        <text>母亲节</text>
-        <text>亲爱的</text>
-        <text>让我们一起祝愿母亲</text>
-        <text>健康长寿天天笑颜</text>
+        <text>愿身体健康</text>
+        <text>愿心想事成</text>
+        <text>妈妈</text>
+        <text>在这个特殊的日子</text>
+        <text>祝你节日快乐</text>
+        <text></text>
         </view>
         
       </view>
@@ -82,8 +83,12 @@ export default class Index extends wepy.page {
 
   events = {};
 
-  onLoad() {
+  onLoad(options) {
     let self = this;
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+    console.log(options);
     wx.getSystemInfo({
       success: function(res) {
         console.log(res.model);
@@ -96,6 +101,48 @@ export default class Index extends wepy.page {
         self.windowHeight = res.windowHeight;
       }
     });
+
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.title = '听妈妈的话';
+    backgroundAudioManager.epname = '';
+    backgroundAudioManager.singer = '周杰伦';
+    backgroundAudioManager.coverImgUrl =
+      'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000';
+    backgroundAudioManager.src =
+      'https://om83cysj8.qnssl.com/%E5%90%AC%E5%A6%88%E5%A6%88%E7%9A%84%E8%AF%9D_%E9%93%83%E5%A3%B0%E4%B9%8B%E5%AE%B6cnwav.mp3';
+  }
+  onShow() {
+    console.log('show');
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.play();
+  }
+  onHide() {
+    console.log('hidden');
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.pause();
+  }
+  onUnload() {
+    console.log('unload');
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.pause();
+  }
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target);
+    }
+    return {
+      title: '妈妈',
+      path: '/pages/details/details',
+      imageUrl:
+        'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    };
   }
 }
 </script>

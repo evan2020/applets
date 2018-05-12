@@ -31,15 +31,15 @@ export default class extends wepy.app {
           pagePath: 'pages/index',
           text: '首页',
           selectedColor: 'red',
-          iconPath: '/icon/jian.png',
-          selectedIconPath: '/icon/jian.png'
+          iconPath: '/imgs/tab/tabRouse.png',
+          selectedIconPath: '/imgs/tab/tabRouse.png'
         },
         {
           pagePath: 'pages/info',
           text: '信息',
           selectedColor: 'red',
-          iconPath: '/icon/dun.png',
-          selectedIconPath: '/icon/dun.png'
+          iconPath: '/imgs/tab/email4.png',
+          selectedIconPath: '/imgs/tab/email4.png'
         }
         // {
         //   pagePath: 'pages/log',
@@ -57,7 +57,7 @@ export default class extends wepy.app {
 
   onLaunch() {
     // 引入知晓云SDK
-    require('./utils/sdk-v1.3.0.js');
+    require('./utils/sdk-v1.4.0.js');
 
     // 初始化 SDK
     let clientID = 'cce6a2162b2331556486';

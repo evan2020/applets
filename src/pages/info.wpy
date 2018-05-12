@@ -3,96 +3,68 @@
 @import '../components/zancss/cell.scss';
 @import '../components/zancss/icon.scss';
 .container {
+  .myInfo {
+    width: 100%;
+    height: 400rpx;
+    background-color: #eee;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .avatar {
+      width: 200rpx;
+      height: 200rpx;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .name {
+      margin-top: 20rpx;
+    }
+  }
 }
 </style>
 <template>
   <view class="container">
 
+      <view class="myInfo">
+          
+              <image mode="aspectFit" src="{{avatar}}" class="avatar"></image>
+            
+            <view class="name">
+                {{name}}
+            </view>
+            
+           
+      </view>
+
     <view class="zan-panel">
 
-        <view class="zan-cell" @tap="letter"> 
+        <!-- <view class="zan-cell" @tap="letter"> 
             <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
             <view class="zan-cell__bd">信件</view>
             <view class="zan-cell__ft">逐字显示效果</view>
-        </view>
+        </view> -->
 
-        <view class="zan-cell">
+        <view class="zan-cell" wx:if="{{loginBtn}}">
             <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
+            <view class="zan-cell__bd"> <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">用户授权</button></view>
+            <view class="zan-cell__ft">游客你好</view>
         </view>
 
         <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-    </view>
-
-    <view class="zan-panel">
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
+            <view class="zan-cell__icon zan-icon zan-icon-contact" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">联系客服</button></view>
+            <view class="zan-cell__ft">问题反馈</view>
         </view>
 
         <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
+            <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
+            <view class="zan-cell__ft">xiaoshuang.eric@gmail.com</view>
         </view>
 
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-    </view>
-
-    <view class="zan-panel">
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-    </view>
-
-    <view class="zan-panel">
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-cart" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
-
-        <view class="zan-cell">
-            <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd">单行列表</view>
-            <view class="zan-cell__ft">详细信息</view>
-        </view>
+        
 
     </view>
 
@@ -109,23 +81,55 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
-    info: ''
+    useInfo: '',
+    loginBtn: true,
+    avatar: 'https://om83cysj8.qnssl.com/323.png',
+    name: '时光'
   };
 
   computed = {};
-  
 
   methods = {
-    letter() {
-      console.log('letter');
-      wx.navigateTo({
-        url: '/appletsA/pages/text/text'
-      });
+    // letter() {
+    //   console.log('letter');
+    //   wx.navigateTo({
+    //     url: '/appletsA/pages/text/text'
+    //   });
+    // },
+
+    // 登录授权
+    userInfoHandler(data) {
+      let self = this;
+      wx.BaaS.handleUserInfo(data).then(
+        userinfo => {
+          // 设置头像和名称
+          self.setData({
+            name: userinfo.nickName,
+            avatar: userinfo.avatarUrl,
+            loginBtn: false
+          });
+        },
+        res => {
+          console.log('失败', res);
+        }
+      );
+    },
+    test() {
+      console.log('test');
     }
   };
 
   events = {};
 
   onLoad() {}
+  onShow() {
+    let self = this;
+
+    let userinfo = wx.BaaS.storage.get('userinfo');
+    // 设置头像和名称
+    self.name = userinfo.nickName || '时光';
+    self.avatar = userinfo.avatarUrl || 'https://om83cysj8.qnssl.com/323.png';
+    self.loginBtn = userinfo.avatarUrl ? false : true;
+  }
 }
 </script>

@@ -66,7 +66,7 @@
   <view class="container">
 
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper">
-		<repeat for="{{imgUrls}}" key="index" index="index" item="item">
+		<repeat for="{{imgUrlArr}}" key="index" index="index" item="item">
 			<swiper-item>
 			<image src="{{item}}" class="slide-image"  />
 			</swiper-item>
@@ -84,12 +84,12 @@
 	<view class='row'>
 
 		<view bindtap='position' class="left" bindtap="routerCard">
-		<image src='https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D400/sign=721f202b30292df597c3ad158c305ce2/6609c93d70cf3bc779cc28e8db00baa1cc112ae2.jpg'></image>
+		<image src='{{cardImgArr[0]}}'></image>
 		<text>母亲节</text>
 		</view>
 
 		<view bindtap='position' class="right">
-		<image src='https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg'></image>
+		<image src='{{cardImgArr[1]}}'></image>
 		<text>父亲节</text>
 		</view>
 
@@ -104,12 +104,12 @@
 	<view class='row'>
 
 		<view bindtap='position' class="left">
-		<image src='https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg'></image>
+		<image src='{{cardImgArr[2]}}'></image>
 		<text>520</text>
 		</view>
 
 		<view bindtap='position' class="right">
-		<image src='https://om83cysj8.qnssl.com/121F2NC-0.jpg'></image>
+		<image src='{{cardImgArr[3]}}'></image>
 		<text>端午节</text>
 		</view>
 
@@ -119,12 +119,12 @@
 	<view class='row'>
 
 		<view bindtap='position' class="left">
-		<image src='https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg'></image>
+		<image src='{{cardImgArr[4]}}'></image>
 		<text>儿童节</text>
 		</view>
 
 		<view bindtap='position' class="right">
-		<image src='https://om83cysj8.qnssl.com/71244679da9054cc53ee98bb54a872b62.jpg'></image>
+		<image src='{{cardImgArr[5]}}'></image>
 		<text>七夕</text>
 		</view>
 
@@ -148,10 +148,18 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
-    imgUrls: [
+    imgUrlArr: [
       'https://om83cysj8.qnssl.com/15223107438967665.jpg',
       'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',
       'https://om83cysj8.qnssl.com/1_22vs0__.jpg'
+    ],
+    cardImgArr: [
+      'https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D400/sign=721f202b30292df597c3ad158c305ce2/6609c93d70cf3bc779cc28e8db00baa1cc112ae2.jpg',
+      'https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg',
+      'https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg',
+      'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
+      'https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg',
+      'https://om83cysj8.qnssl.com/71244679da9054cc53ee98bb54a872b62.jpg'
     ],
     indicatorDots: true,
     autoplay: true,
@@ -163,9 +171,10 @@ export default class Index extends wepy.page {
 
   methods = {
     routerCard() {
-      console.log('跳到卡片页面');
+	  console.log('跳到卡片页面');
+	  
       wx.navigateTo({
-        url: '/pages/details/details'
+        url: `/pages/details/details`
       });
     }
   };
@@ -173,7 +182,11 @@ export default class Index extends wepy.page {
   events = {};
 
   onLoad() {
-    let self = this;
+	let self = this;
+	wx.showShareMenu({
+      withShareTicket: true
+    });
+    
   }
 }
 </script>

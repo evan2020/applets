@@ -1,4 +1,10 @@
 console.log('WePY开启错误监控');
-console.warn(`CLI报错：WARNING IN : src/pages/details/details.wpy
-[xmldom warning]	attribute "“text”" missed quot(")!!
+console.warn(`CLI报错：WARNING IN : src/pages/info.wpy
+[xmldom warning]	attribute "true" missed quot(")!!
+@#[line:undefined,col:undefined]`);
+console.warn(`CLI报错：WARNING IN : src/pages/info.wpy
+[xmldom warning]	attribute "true" missed quot(")!!
+@#[line:undefined,col:undefined]`);
+console.warn(`CLI报错：WARNING IN : src/pages/info.wpy
+[xmldom warning]	attribute "true" missed quot(")!!
 @#[line:undefined,col:undefined]`);
