@@ -1,0 +1,16 @@
+
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="“text”">
+        <text>家是温暖港湾</text>
+        <text>母爱是甜蜜小船</text>
+        <text>无论投身地北</text>
+        <text>还是浪迹天南</text>
+        <text>无论繁忙劳碌</text>
+        <text>还是游玩休闲</text>
+        <text>母亲节</text>
+        <text>亲爱的</text>
+        <text>让我们一起祝愿母亲</text>
+        <text>健康长寿天天笑颜</text>
+      </view>
+   
+  </view>

@@ -11,5 +11,31 @@
 	"appid": "wx9cea2121f0154bf7",
 	"projectname": "%E6%B2%99%E6%BC%8F%E7%9A%84%E6%97%B6%E5%85%89",
 	"miniprogramRoot": "./dist",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "卡片页面",
+					"pathName": "pages/details/details"
+				}
+			]
+		}
+	}
 }
