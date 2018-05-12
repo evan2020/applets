@@ -1,5 +1,7 @@
 <style lang="scss">
 // @import '../components/zancss/btn.scss';
+
+// 设置文字向上的动画效果
 @keyframes myfirst {
   from {
     bottom: -890rpx;
@@ -45,20 +47,20 @@
 <template>
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
       <view class="content">
+        <!-- 祝福语 -->
         <view class=“text”>
           <text>父母在，不远游</text>
-        <text>不在你们身边的时候</text>
-        <text>希望你们能照顾好自己</text>
-         <text>无论繁忙劳碌</text>
-        <text>还是游玩休闲</text>
-        <text>愿身体健康</text>
-        <text>愿心想事成</text>
-        <text>妈妈</text>
-        <text>在这个特殊的日子</text>
-        <text>祝你节日快乐</text>
-        <text></text>
+          <text>不在你们身边的时候</text>
+          <text>希望你们能照顾好自己</text>
+          <text>无论繁忙劳碌</text>
+          <text>还是游玩休闲</text>
+          <text>愿身体健康</text>
+          <text>愿心想事成</text>
+          <text>妈妈</text>
+          <text>在这个特殊的日子</text>
+          <text>祝你节日快乐</text>
+          <text></text>
         </view>
-        
       </view>
    
   </view>
@@ -85,10 +87,13 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+
+    //显示转发
     wx.showShareMenu({
       withShareTicket: true
     });
-    console.log(options);
+
+    // 获取手机信息
     wx.getSystemInfo({
       success: function(res) {
         console.log(res.model);
@@ -102,6 +107,7 @@ export default class Index extends wepy.page {
       }
     });
 
+    // 设置背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
     backgroundAudioManager.title = '听妈妈的话';
     backgroundAudioManager.epname = '';
@@ -111,8 +117,11 @@ export default class Index extends wepy.page {
     backgroundAudioManager.src =
       'https://om83cysj8.qnssl.com/%E5%90%AC%E5%A6%88%E5%A6%88%E7%9A%84%E8%AF%9D_%E9%93%83%E5%A3%B0%E4%B9%8B%E5%AE%B6cnwav.mp3';
   }
+
+  // 当页面显示的时候
   onShow() {
     console.log('show');
+    // 继续播放背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
     backgroundAudioManager.play();
   }
@@ -121,19 +130,25 @@ export default class Index extends wepy.page {
     const backgroundAudioManager = wx.getBackgroundAudioManager();
     backgroundAudioManager.pause();
   }
+
+  // 当页面切换（隐藏）的时候
   onUnload() {
     console.log('unload');
+    // 暂停背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
     backgroundAudioManager.pause();
   }
+  // 设置分享卡片
   onShareAppMessage(res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
     }
+    // 卡片内容
     return {
       title: '妈妈',
       path: '/pages/details/details',
+      // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',
       success: function(res) {
