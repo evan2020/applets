@@ -1,0 +1,20 @@
+
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="“text”">
+          <text>520</text>
+          <text>我爱你</text>
+          <text>iloveyou</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text>不知道写点什么</text>
+          <text/>
+        </view>
+      </view>
+   
+  </view>

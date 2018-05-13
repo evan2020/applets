@@ -19,7 +19,7 @@
 
 	<view class="row">
 
-		<view bindtap="routerCard" class="left">
+		<view bindtap="routerCardMom" class="left">
 		<image src="{{cardImgArr[0]}}"/>
 		<text>母亲节</text>
 		</view>
@@ -39,7 +39,7 @@
 
 	<view class="row">
 
-		<view bindtap="position" class="left">
+		<view bindtap="routerCard520" class="left">
 		<image src="{{cardImgArr[2]}}"/>
 		<text>520</text>
 		</view>

@@ -18,7 +18,7 @@ export default class extends wepy.app {
     subPackages: [
       {
         root: 'appletsA',
-        pages: ['pages/index/index', 'pages/text/text']
+        pages: ['pages/index/index', 'pages/text/text','pages/details/520']
       },
       {
         root: 'appletsB',

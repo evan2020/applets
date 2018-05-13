@@ -1,0 +1,20 @@
+
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="“text”">
+          <text>父母在，不远游</text>
+          <text>不在你们身边的时候</text>
+          <text>希望你们能照顾好自己</text>
+          <text>无论繁忙劳碌</text>
+          <text>还是游玩休闲</text>
+          <text>愿身体健康</text>
+          <text>愿心想事成</text>
+          <text>妈妈</text>
+          <text>在这个特殊的日子</text>
+          <text>祝你节日快乐</text>
+          <text/>
+        </view>
+      </view>
+   
+  </view>

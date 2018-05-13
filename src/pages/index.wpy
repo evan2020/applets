@@ -83,7 +83,7 @@
 
 	<view class='row'>
 
-		<view bindtap='position' class="left" bindtap="routerCard">
+		<view bindtap='position' class="left" bindtap="routerCardMom">
 		<image src='{{cardImgArr[0]}}'></image>
 		<text>母亲节</text>
 		</view>
@@ -103,7 +103,7 @@
 
 	<view class='row'>
 
-		<view bindtap='position' class="left">
+		<view bindtap='position' class="left" bindtap="routerCard520">
 		<image src='{{cardImgArr[2]}}'></image>
 		<text>520</text>
 		</view>
@@ -173,10 +173,17 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
-    //跳到卡片页面
-    routerCard() {
+    //跳到卡片页面（母亲节）
+    routerCardMom() {
       wx.navigateTo({
         url: `/pages/details/details`
+      });
+    },
+
+    //跳到卡片页面（520）
+    routerCard520() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/520`
       });
     }
   };
