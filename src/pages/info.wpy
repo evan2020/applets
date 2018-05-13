@@ -76,24 +76,24 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '信息'
+    navigationBarTitleText: `信息`
   };
   components = {};
 
   data = {
-    useInfo: '',
+    useInfo: ``,
     loginBtn: true,
-    avatar: 'https://om83cysj8.qnssl.com/323.png',
-    name: '时光'
+    avatar: `https://om83cysj8.qnssl.com/323.png`,
+    name: `时光`
   };
 
   computed = {};
 
   methods = {
     // letter() {
-    //   console.log('letter');
+    //   console.log(`letter`);
     //   wx.navigateTo({
-    //     url: '/appletsA/pages/text/text'
+    //     url: `/appletsA/pages/text/text`
     //   });
     // },
 
@@ -110,25 +110,37 @@ export default class Index extends wepy.page {
           });
         },
         res => {
-          console.log('失败', res);
+          console.log(`失败`, res);
         }
       );
     },
     test() {
-      console.log('test');
+      console.log(`test`);
     }
   };
 
   events = {};
 
-  onLoad() {}
+  onLoad() {
+    // 支付示例代码
+    // let params = {
+    //   totalCost: 0.1,
+    //   merchandiseDescription: '深蓝色秋裤'
+    // };
+    // wx.BaaS.pay(params).then(
+    //   res => {},
+    //   err => {
+    //     console.log(err);
+    //   }
+    // );
+  }
   onShow() {
     let self = this;
 
-    let userinfo = wx.BaaS.storage.get('userinfo');
+    let userinfo = wx.BaaS.storage.get(`userinfo`);
     // 设置头像和名称
-    self.name = userinfo.nickName || '时光';
-    self.avatar = userinfo.avatarUrl || 'https://om83cysj8.qnssl.com/323.png';
+    self.name = userinfo.nickName || `时光`;
+    self.avatar = userinfo.avatarUrl || `https://om83cysj8.qnssl.com/323.png`;
     self.loginBtn = userinfo.avatarUrl ? false : true;
   }
 }
