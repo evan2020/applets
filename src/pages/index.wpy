@@ -159,9 +159,9 @@ export default class Index extends wepy.page {
   data = {
     //banner图片
     imgUrlArr: [
-      `https://om83cysj8.qnssl.com/15223107438967665.jpg`,
-      `https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg`,
-      `https://om83cysj8.qnssl.com/1_22vs0__.jpg`
+      `https://om83cysj8.qnssl.com/2-1FG013255T53.jpg`,
+      `https://om83cysj8.qnssl.com/i-love-you-virus.jpg`,
+      `https://om83cysj8.qnssl.com/maxresdefault.jpg`
     ],
     //节日卡片图片
     cardImgArr: [
