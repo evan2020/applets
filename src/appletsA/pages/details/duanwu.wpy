@@ -13,7 +13,7 @@
 
 .details {
   width: 100%;
-  background-image: url('https://om83cysj8.qnssl.com/36f3d726bc9d628873dedd475c92dfe5cd133bf4131c8-laAYJl_fw658.jpeg');
+  background-image: url('https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -23,7 +23,7 @@
 
   .content {
     font-size: 30rpx;
-    color: #F08080;
+    color: #66cc99;
     position: relative;
     height: 890rpx;
     width: 500rpx;
@@ -49,13 +49,15 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>他们说</text>
-          <text>这个世界上</text>
-          <text>海最深邃</text>
-          <text>干净又透明</text>
-          <text>我想</text>
-          <text>那是他们没见过你的眼睛</text>
+          <text>送你个粽子</text>
+          <text>幸运铺满清新的叶</text>
+          <text>快乐裹成美味的馅</text>
+          <text>闻起来是温馨</text>
+          <text>吃起来是甜蜜</text>
+          <text>咽下去是幸福</text>
+          <text>回味着是美满</text>
+          <text>端午节快乐！</text>
+          <!-- <text>回味着是美满</text> -->
          
           <text></text>
         </view>
@@ -69,7 +71,7 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '520'
+    navigationBarTitleText: '端午'
   };
   components = {};
 
@@ -107,13 +109,13 @@ export default class Index extends wepy.page {
 
     // 设置背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
-    backgroundAudioManager.title = '就是爱你';
+    backgroundAudioManager.title = '忆端午';
     backgroundAudioManager.epname = '';
-    backgroundAudioManager.singer = '陶喆';
+    backgroundAudioManager.singer = '罗中旭';
     backgroundAudioManager.coverImgUrl =
-      'https://om83cysj8.qnssl.com/123jjdln%20%28153%29_Fotor.jpg';
+      'https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg';
     backgroundAudioManager.src =
-      'https://om83cysj8.qnssl.com/552.mp3';
+      'https://om83cysj8.qnssl.com/95173.mp3';
   }
 
   // 当页面显示的时候
@@ -144,11 +146,11 @@ export default class Index extends wepy.page {
     }
     // 卡片内容
     return {
-      title: '我爱你',
-      path: '/appletsA/pages/details/520',
+      title: '端午节快乐',
+      path: '/appletsA/pages/details/duanwu',
       // 封面图
       imageUrl:
-        'https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg',
+        'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
       success: function(res) {
         // 转发成功
       },

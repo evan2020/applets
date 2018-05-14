@@ -13,7 +13,7 @@
 
 .details {
   width: 100%;
-  background-image: url('https://om83cysj8.qnssl.com/36f3d726bc9d628873dedd475c92dfe5cd133bf4131c8-laAYJl_fw658.jpeg');
+  background-image: url('https://om83cysj8.qnssl.com/924d_700x962_Fotor.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -21,9 +21,10 @@
   flex-direction: column;
   align-items: center;
 
+
   .content {
     font-size: 30rpx;
-    color: #F08080;
+    color: #ff9933;
     position: relative;
     height: 890rpx;
     width: 500rpx;
@@ -49,13 +50,15 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>他们说</text>
-          <text>这个世界上</text>
-          <text>海最深邃</text>
-          <text>干净又透明</text>
-          <text>我想</text>
-          <text>那是他们没见过你的眼睛</text>
+          <text>六一儿童节</text>
+          <text>送你六份大礼</text>
+          <text>葫芦娃的勇敢</text>
+          <text>奥特曼的无敌</text>
+          <text>一休哥的聪明</text>
+          <text>蓝精灵的伶俐</text>
+          <text>米老鼠的潇洒</text>
+          <text>花仙子的美丽</text>
+          <text>愿你的生活像童话一样精彩！</text>
          
           <text></text>
         </view>
@@ -69,7 +72,7 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '520'
+    navigationBarTitleText: '儿童节'
   };
   components = {};
 
@@ -107,13 +110,13 @@ export default class Index extends wepy.page {
 
     // 设置背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
-    backgroundAudioManager.title = '就是爱你';
+    backgroundAudioManager.title = '韩国可爱';
     backgroundAudioManager.epname = '';
-    backgroundAudioManager.singer = '陶喆';
+    backgroundAudioManager.singer = '铃声';
     backgroundAudioManager.coverImgUrl =
-      'https://om83cysj8.qnssl.com/123jjdln%20%28153%29_Fotor.jpg';
+      'https://om83cysj8.qnssl.com/924d_700x962_Fotor.jpg';
     backgroundAudioManager.src =
-      'https://om83cysj8.qnssl.com/552.mp3';
+      'https://om83cysj8.qnssl.com/291204372936670.mp3';
   }
 
   // 当页面显示的时候
@@ -144,11 +147,11 @@ export default class Index extends wepy.page {
     }
     // 卡片内容
     return {
-      title: '我爱你',
-      path: '/appletsA/pages/details/520',
+      title: '儿童节快乐',
+      path: '/appletsA/pages/details/child',
       // 封面图
       imageUrl:
-        'https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg',
+        'https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg',
       success: function(res) {
         // 转发成功
       },

@@ -1,0 +1,20 @@
+
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="text">
+          <text>六一儿童节</text>
+          <text>送你六份大礼</text>
+          <text>葫芦娃的勇敢</text>
+          <text>奥特曼的无敌</text>
+          <text>一休哥的聪明</text>
+          <text>蓝精灵的伶俐</text>
+          <text>米老鼠的潇洒</text>
+          <text>花仙子的美丽</text>
+          <text>愿你的生活像童话一样精彩！</text>
+         
+          <text/>
+        </view>
+      </view>
+   
+  </view>

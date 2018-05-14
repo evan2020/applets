@@ -60,8 +60,8 @@
 
         <view class="zan-cell">
             <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
-            <view class="zan-cell__ft">xiaoshuang.eric@gmail.com</view>
+            <view class="zan-cell__bd"> <button bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
+            <view class="zan-cell__ft">evan19910605@gmail.com</view>
         </view>
 
         

@@ -75,55 +75,64 @@
 
 	<view class='nineBox'>
 
-	<view class=“hot_title”>
+	<view class="hot_title">
 		<view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
 		<view class="hot_text">热门推荐</view>
 	</view>
+
+  
 	 
 
 	<view class='row'>
-
-		<view bindtap='position' class="left" bindtap="routerCardMom">
-		<image src='{{cardImgArr[0]}}'></image>
-		<text>母亲节</text>
+    <view bindtap='position' class="left" bindtap="routerCard520">
+		<image src='{{cardImgArr[2]}}'></image>
+		<text>520</text>
 		</view>
 
-		<view bindtap='position' class="right">
-		<image src='{{cardImgArr[1]}}'></image>
-		<text>父亲节</text>
+    <view bindtap='position' class="right" bindtap="routerCardDw">
+		<image src='{{cardImgArr[3]}}'></image>
+		<text>端午节</text>
 		</view>
 
 		
+
+		
+		
 	</view>
 
-	<view class=“hot_title”>
+	<view class="hot_title">
 		<view class="zan-icon zan-icon-receive-gift"  style="color: #ff4343;"></view>
 		<view class="hot_text">常用贺卡</view>
 	</view>
 
 	<view class='row'>
 
-		<view bindtap='position' class="left" bindtap="routerCard520">
-		<image src='{{cardImgArr[2]}}'></image>
-		<text>520</text>
+		
+
+    <view bindtap='position' class="left" bindtap="routerCardMom">
+		<image src='{{cardImgArr[0]}}'></image>
+		<text>母亲节</text>
 		</view>
 
-		<view bindtap='position' class="right">
-		<image src='{{cardImgArr[3]}}'></image>
-		<text>端午节</text>
+    <view bindtap='position' class="right" bindtap="routerCardFather">
+		<image src='{{cardImgArr[1]}}'></image>
+		<text>父亲节</text>
 		</view>
+
+
+		
 
 		
 	</view>
 
 	<view class='row'>
 
-		<view bindtap='position' class="left">
+		<view bindtap='position' class="left" bindtap="routerCardChild">
 		<image src='{{cardImgArr[4]}}'></image>
 		<text>儿童节</text>
 		</view>
 
-		<view bindtap='position' class="right">
+		<view bindtap='position' class="right" bindtap="routerCardLove"> 
 		<image src='{{cardImgArr[5]}}'></image>
 		<text>七夕</text>
 		</view>
@@ -185,7 +194,39 @@ export default class Index extends wepy.page {
       wx.navigateTo({
         url: `/appletsA/pages/details/520`
       });
-    }
+    },
+
+    //跳到卡片页面（520）
+    routerCardDw() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/duanwu`
+      });
+    },
+
+    //跳到卡片页面（父亲节）
+    routerCardFather() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/father`
+      });
+    },
+
+    //跳到卡片页面（七夕）
+    routerCardLove() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/iloveyou`
+      });
+    },
+
+    //跳到卡片页面（儿童节）
+    routerCardChild() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/child`
+      });
+    },
+
+
+
+
   };
 
   events = {};

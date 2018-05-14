@@ -13,7 +13,7 @@
 
 .details {
   width: 100%;
-  background-image: url('https://om83cysj8.qnssl.com/36f3d726bc9d628873dedd475c92dfe5cd133bf4131c8-laAYJl_fw658.jpeg');
+  background-image: url('https://om83cysj8.qnssl.com/900fd18aade063301b497fbf84662548.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -23,7 +23,7 @@
 
   .content {
     font-size: 30rpx;
-    color: #F08080;
+    color: #0099ff;
     position: relative;
     height: 890rpx;
     width: 500rpx;
@@ -49,13 +49,15 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>他们说</text>
-          <text>这个世界上</text>
-          <text>海最深邃</text>
-          <text>干净又透明</text>
-          <text>我想</text>
-          <text>那是他们没见过你的眼睛</text>
+          <text>小时候</text>
+          <text>父亲就是颗参天大树</text>
+          <text>为我们遮风挡雨</text>
+          <text>长大了</text>
+          <text>父亲成了本百科全书</text>
+          <text>为我们答疑解惑</text>
+          <text>父亲，永远是我们的支柱</text>
+          <text>爸爸</text>
+          <text>节日快乐</text>
          
           <text></text>
         </view>
@@ -69,7 +71,7 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '520'
+    navigationBarTitleText: '父亲节'
   };
   components = {};
 
@@ -107,13 +109,13 @@ export default class Index extends wepy.page {
 
     // 设置背景音乐
     const backgroundAudioManager = wx.getBackgroundAudioManager();
-    backgroundAudioManager.title = '就是爱你';
+    backgroundAudioManager.title = '父亲';
     backgroundAudioManager.epname = '';
-    backgroundAudioManager.singer = '陶喆';
+    backgroundAudioManager.singer = '筷子兄弟';
     backgroundAudioManager.coverImgUrl =
-      'https://om83cysj8.qnssl.com/123jjdln%20%28153%29_Fotor.jpg';
+      'https://om83cysj8.qnssl.com/a9d63448b881e12eab44fdfcdbd1cb7c_Fotor.png';
     backgroundAudioManager.src =
-      'https://om83cysj8.qnssl.com/552.mp3';
+      'https://om83cysj8.qnssl.com/at20111229221940.mp3';
   }
 
   // 当页面显示的时候
@@ -144,11 +146,11 @@ export default class Index extends wepy.page {
     }
     // 卡片内容
     return {
-      title: '我爱你',
-      path: '/appletsA/pages/details/520',
+      title: '父亲节快乐',
+      path: '/appletsA/pages/details/father',
       // 封面图
       imageUrl:
-        'https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg',
+        'https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg',
       success: function(res) {
         // 转发成功
       },
