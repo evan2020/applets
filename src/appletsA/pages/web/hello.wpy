@@ -5,7 +5,7 @@
 </style>
 <template>
   <view class="container">
-   <web-view src="https://shalou.smallzhiyun.com/#"></web-view>
+   <web-view src="https://shalou.smallzhiyun.com/index.html"></web-view>
   </view>
   
 </template>

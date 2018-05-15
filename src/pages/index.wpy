@@ -234,6 +234,7 @@ export default class Index extends wepy.page {
   onLoad() {
     let self = this;
 
+
     //显示转发按钮
     wx.showShareMenu({
       withShareTicket: true
