@@ -111,7 +111,6 @@ export default class Index extends wepy.page {
     //   });
     // },
 
-
     routerToWeb() {
       console.log(`letter`);
       wx.navigateTo({
@@ -164,6 +163,35 @@ export default class Index extends wepy.page {
     self.name = userinfo.nickName || `时光`;
     self.avatar = userinfo.avatarUrl || `https://om83cysj8.qnssl.com/323.png`;
     self.loginBtn = userinfo.avatarUrl ? false : true;
+
+    // 更新 tableID 为 36571 的数据表中 recordID 为 5afb2d4d65c0ad65354c6f63 的数据项的 cardImgArr 字段
+    // let tableID = 36571;
+    // let recordID = '5afb2d4d65c0ad65354c6f63';
+
+    // let Product = new wx.BaaS.TableObject(tableID);
+    // let product = Product.getWithoutData(recordID);
+
+    // product.set('cardImgArr', [
+    //   `https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D400/sign=721f202b30292df597c3ad158c305ce2/6609c93d70cf3bc779cc28e8db00baa1cc112ae2.jpg`,
+    //   `https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg`,
+    //   `https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg`,
+    //   `https://om83cysj8.qnssl.com/121F2NC-0.jpg`,
+    //   `https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg`,
+    //   `https://om83cysj8.qnssl.com/71244679da9054cc53ee98bb54a872b62.jpg`
+    // ]);
+    // product.set('imgUrlArr', [
+    //   `https://om83cysj8.qnssl.com/2-1FG013255T53.jpg`,
+    //   `https://om83cysj8.qnssl.com/i-love-you-virus.jpg`,
+    //   `https://om83cysj8.qnssl.com/maxresdefault.jpg`
+    // ]);
+    // product.update().then(
+    //   res => {
+    //     console.log(res)
+    //   },
+    //   err => {
+    //     console.log(err)
+    //   }
+    // );
   }
 }
 </script>
