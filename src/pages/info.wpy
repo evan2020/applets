@@ -48,20 +48,34 @@
 
         <view class="zan-cell" wx:if="{{loginBtn}}">
             <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">用户授权</button></view>
+            <view class="zan-cell__bd"> <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">用户授权</button></view>
             <view class="zan-cell__ft">游客你好</view>
         </view>
 
         <view class="zan-cell">
             <view class="zan-cell__icon zan-icon zan-icon-contact" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">联系客服</button></view>
+            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">联系客服</button></view>
             <view class="zan-cell__ft">问题反馈</view>
         </view>
 
         <view class="zan-cell">
             <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button bindgetuserinfo="userInfoHandler" plain=true style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
+            <view class="zan-cell__bd"> <button bindgetuserinfo="userInfoHandler" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
             <view class="zan-cell__ft">evan19910605@gmail.com</view>
+        </view>
+
+        
+
+    </view>
+
+     <view class="zan-panel">
+
+    
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> <button bindtap="routerToWeb" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">官方网站</button></view>
+            <view class="zan-cell__ft">小智云科技</view>
         </view>
 
         
@@ -96,6 +110,14 @@ export default class Index extends wepy.page {
     //     url: `/appletsA/pages/text/text`
     //   });
     // },
+
+
+    routerToWeb() {
+      console.log(`letter`);
+      wx.navigateTo({
+        url: `/appletsA/pages/web/hello`
+      });
+    },
 
     // 登录授权
     userInfoHandler(data) {

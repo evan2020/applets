@@ -1,0 +1,47 @@
+<style lang="less">
+.container {
+ 
+}
+</style>
+<template>
+  <view class="container">
+   <web-view src="https://shalou.smallzhiyun.com/#"></web-view>
+  </view>
+  
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: 'H5-Web页面'
+  };
+  components = {};
+
+  data = {
+    
+    content: 'H5-Web页面',
+   
+  };
+
+  computed = {};
+
+  methods = {
+    
+
+    
+  };
+
+  events = {};
+
+  onLoad() {
+    
+    
+  }
+  onShow() {
+    
+    
+  }
+}
+</script>

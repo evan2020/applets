@@ -48,7 +48,7 @@
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
       <view class="content">
         <!-- 祝福语 -->
-        <view class=“text”>
+        <view class="text">
           <text>父母在，不远游</text>
           <text>不在你们身边的时候</text>
           <text>希望你们能照顾好自己</text>

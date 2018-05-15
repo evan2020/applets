@@ -42,4 +42,18 @@
 
     </view>
 
+     <view class="zan-panel">
+
+    
+
+        <view class="zan-cell">
+            <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"/>
+            <view class="zan-cell__bd"> <button bindtap="routerToWeb" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">官方网站</button></view>
+            <view class="zan-cell__ft">小智云科技</view>
+        </view>
+
+        
+
+    </view>
+
   </view>

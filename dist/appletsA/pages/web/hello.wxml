@@ -1,0 +1,4 @@
+
+  <view class="container">
+   <web-view src="https://shalou.smallzhiyun.com/#"/>
+  </view>

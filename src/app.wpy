@@ -26,6 +26,7 @@ export default class extends wepy.app {
           'pages/details/father',
           'pages/details/iloveyou',
           'pages/details/child',
+          'pages/web/hello',
         ]
       },
       {
