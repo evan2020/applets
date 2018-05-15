@@ -223,10 +223,6 @@ export default class Index extends wepy.page {
     wx.showShareMenu({
       withShareTicket: true
     });
-  }
-
-  onShow() {
-    let self = this;
 
     // 获取banner和card图片数据
     let tableID = 36571;
@@ -245,6 +241,12 @@ export default class Index extends wepy.page {
         console.log(err);
       }
     );
+  }
+
+  onShow() {
+    let self = this;
+
+    
   }
   onReachBottom() {
     console.log('到底了');
