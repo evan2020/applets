@@ -30,9 +30,37 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+
+    //显示转发按钮
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+
     self.url = options.url;
     self.$apply();
   }
   onShow() {}
+  // 设置分享卡片
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target);
+    }
+    let url=this.data.url;
+    // 卡片内容
+    return {
+      title: '',
+      path: `/appletsA/pages/web/hello?url=${url}`,
+      // 封面图
+      imageUrl:
+        '',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    };
+  }
 }
 </script>
