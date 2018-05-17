@@ -54,13 +54,13 @@
 
         <view class="zan-cell">
             <view class="zan-cell__icon zan-icon zan-icon-contact" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button open-type="contact" bindgetuserinfo="userInfoHandler" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">联系客服</button></view>
+            <view class="zan-cell__bd"> <button open-type="contact"  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">联系客服</button></view>
             <view class="zan-cell__ft">问题反馈</view>
         </view>
 
         <view class="zan-cell">
             <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button bindgetuserinfo="userInfoHandler" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
+            <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">邮箱地址</button></view>
             <view class="zan-cell__ft">evan19910605@gmail.com</view>
         </view>
 
@@ -72,10 +72,10 @@
 
     
 
-        <view class="zan-cell">
+        <view class="zan-cell" bindtap="routerToWeb">
             <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
-            <view class="zan-cell__bd"> <button bindtap="routerToWeb" plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">官方网站</button></view>
-            <view class="zan-cell__ft">小智云科技</view>
+            <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">幸运抽奖</button></view>
+            <view class="zan-cell__ft"></view>
         </view>
 
         

@@ -5,7 +5,7 @@
 </style>
 <template>
   <view class="container">
-   <web-view src="https://shalou.smallzhiyun.com/index.html"></web-view>
+   <web-view src="https://shalou.smallzhiyun.com/lottery/lottery.html"></web-view>
   </view>
   
 </template>
@@ -15,13 +15,13 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: 'H5-Web页面'
+    navigationBarTitleText: '幸运抽奖'
   };
   components = {};
 
   data = {
     
-    content: 'H5-Web页面',
+    content: '幸运抽奖',
    
   };
 
