@@ -67,7 +67,7 @@
 
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper">
 		<repeat for="{{imgUrlArr}}" key="index" index="index" item="item">
-			<swiper-item>
+			<swiper-item bindtap="routerHello" data-index="{{index}}">
 			<image src="{{item}}" class="slide-image"  />
 			</swiper-item>
 		</repeat>
@@ -171,6 +171,27 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
+
+    // 轮播图跳转
+    //banner1跳
+    routerHello(e) {
+      console.log(e);
+      let index=e.currentTarget.dataset.index;
+      let url=`https://shalou.smallzhiyun.com/express/index.html`;
+      // if(index==0){
+      //   url=`https://shalou.smallzhiyun.com/emotionalParticles/index.html`;
+      // }else if(index==1){
+      //   url=`https://shalou.smallzhiyun.com/express/index.html`;
+      // }else if(index==2){
+      //   url=`https://shalou.smallzhiyun.com/lottery/lottery.html`;
+      // }
+      wx.navigateTo({
+        url: `/appletsA/pages/web/hello?url=${url}`
+      });
+    },
+
+
+
     //跳到卡片页面（母亲节）
     routerCardMom() {
       wx.navigateTo({

@@ -112,9 +112,9 @@ export default class Index extends wepy.page {
     // },
 
     routerToWeb() {
-      console.log(`letter`);
+      let url=`https://shalou.smallzhiyun.com/lottery/lottery.html`;
       wx.navigateTo({
-        url: `/appletsA/pages/web/hello`
+        url: `/appletsA/pages/web/hello?url=${url}`
       });
     },
 

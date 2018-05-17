@@ -3,7 +3,7 @@
 
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper">
 		<block wx:for="{{imgUrlArr}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-			<swiper-item>
+			<swiper-item bindtap="routerHello" data-index="{{index}}">
 			<image src="{{item}}" class="slide-image"/>
 			</swiper-item>
 		</block>

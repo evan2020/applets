@@ -1,11 +1,10 @@
 <style lang="less">
 .container {
- 
 }
 </style>
 <template>
   <view class="container">
-   <web-view src="https://shalou.smallzhiyun.com/lottery/lottery.html"></web-view>
+   <web-view src="{{url}}"></web-view>
   </view>
   
 </template>
@@ -15,33 +14,25 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '幸运抽奖'
+    navigationBarTitleText: ''
   };
   components = {};
 
   data = {
-    
-    content: '幸运抽奖',
-   
+    url: ''
   };
 
   computed = {};
 
-  methods = {
-    
-
-    
-  };
+  methods = {};
 
   events = {};
 
-  onLoad() {
-    
-    
+  onLoad(options) {
+    let self = this;
+    self.url = options.url;
+    self.$apply();
   }
-  onShow() {
-    
-    
-  }
+  onShow() {}
 }
 </script>
