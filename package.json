@@ -17,6 +17,7 @@
   "author": "evan199101@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "js-base64": "^2.4.5",
     "node-sass": "^4.7.2",
     "wepy": "^1.6.0",
     "wepy-async-function": "^1.4.4",

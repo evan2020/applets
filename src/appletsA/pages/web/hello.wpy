@@ -11,7 +11,6 @@
 
 <script>
 import wepy from 'wepy';
-
 export default class Index extends wepy.page {
   config = {
     navigationBarTitleText: ''
@@ -19,7 +18,10 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
-    url: ''
+    url: ``,
+    msg: ``,
+    code: ``,
+    baseUrl:``,
   };
 
   computed = {};
@@ -30,30 +32,45 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+    console.log(options);
 
     //显示转发按钮
     wx.showShareMenu({
       withShareTicket: true
     });
 
-    self.url = options.url;
+    // 对url参数进行base编码（解决小程序与H5参数乱码问题）
+    let Base64 = require('../../../utils/base64.min.js').Base64;
+
+    self.code = options.msg;
+    self.msg = Base64.encode(options.msg);
+    self.baseUrl = Base64.encode(options.url);
+
+    self.$apply();
+
+    // 设置跳转的url
+    self.url = `${options.url}?msg=${self.msg}`;
+
     self.$apply();
   }
   onShow() {}
+
   // 设置分享卡片
   onShareAppMessage(res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
     }
-    let url=this.data.url;
+
+    let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+    let code = this.data.code;
+    console.log(this.data);
     // 卡片内容
     return {
       title: '',
-      path: `/appletsA/pages/web/hello?url=${url}`,
+      path: `/appletsA/pages/web/hello?url=${url}&msg=${code}&type=share`,
       // 封面图
-      imageUrl:
-        '',
+      imageUrl: 'https://om83cysj8.qnssl.com/goodluck.jpg',
       success: function(res) {
         // 转发成功
       },

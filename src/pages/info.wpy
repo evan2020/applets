@@ -73,8 +73,15 @@
     
 
         <view class="zan-cell" bindtap="routerToWeb">
-            <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
+            <view class="zan-cell__icon zan-icon zan-icon-gold-coin" style="color:#38f;"></view>
             <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">幸运抽奖</button></view>
+            <view class="zan-cell__ft"></view>
+        </view>
+
+
+         <view class="zan-cell" bindtap="routerToPrize">
+            <view class="zan-cell__icon zan-icon zan-icon-pending-evaluate" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">刮刮乐</button></view>
             <view class="zan-cell__ft"></view>
         </view>
 
@@ -115,6 +122,17 @@ export default class Index extends wepy.page {
       let url=`https://shalou.smallzhiyun.com/lottery/lottery.html`;
       wx.navigateTo({
         url: `/appletsA/pages/web/hello?url=${url}`
+      });
+    },
+
+    routerToPrize() {
+      let url=`https://shalou.smallzhiyun.com/prize/index.html`;
+      // wx.navigateTo({
+      //   url: `/appletsA/pages/web/hello?url=${url}`
+      // });
+
+      wx.navigateTo({
+        url: `/appletsB/pages/text/text?url=${url}`
       });
     },
 

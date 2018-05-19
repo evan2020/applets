@@ -1,47 +1,77 @@
 <style lang="less">
-  .container{
-    .test_less{
-      color:pink;
-    }
+.container {
+  .test_less {
+    color: pink;
   }
+}
 </style>
 <template>
   <view class="container">
-    <view class="test_less">test less</view>
+    <!-- <view class="test_less">姓名</view>
+
+    <view>
+        <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+    </view> -->
+
+
+    <view class="test_less">
+      <text>留言</text>
+      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="我爱你" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;" value="{{textarea.msg}}" />
+      <button type="primary" bindtap="sendMsg">发送</button>
+    </view>
+
+    
+
+    
   </view>
 </template>
 
 <script>
-  import wepy from 'wepy'
- 
-  export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: 'test'
-    }
-    components = {
-      
-    }
-    
+import wepy from 'wepy';
 
-    data = {
-      
-    }
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '留言'
+  };
+  components = {};
 
-    computed = {
-      
+  data = {
+    textarea: {
+      msg: '', //输入框的内容
+      placeholder: '', //输入框为空时占位符
+      disabled: false, //是否禁用
+      maxlength: 10, //最大输入长度，设置为 -1 的时候不限制最大长度
+      focus: false //获取焦点
     }
+  };
 
-    methods = {
-      
-    }
+  computed = {};
 
-    events = {
-      
-    }
+  methods = {
+    getMsg(e) {
+      let self = this;
 
-    onLoad() {
-      let self = this
-      
+      // 保存输入框留言
+      self.textarea.msg = e.detail.value;
+      self.$apply();
+      console.log(e.detail.value);
+    },
+
+    sendMsg() {
+      let self = this;
+      let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+      let msg = self.textarea.msg;
+      console.log(msg);
+      wx.navigateTo({
+        url: `/appletsA/pages/web/hello?url=${url}&msg=${msg}`
+      });
     }
+  };
+
+  events = {};
+
+  onLoad() {
+    let self = this;
   }
+}
 </script>
