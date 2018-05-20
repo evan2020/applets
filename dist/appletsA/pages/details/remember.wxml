@@ -1,0 +1,17 @@
+
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="text">
+          <!-- <text>我爱你</text> -->
+          <text>亲爱的</text>
+          <text>去年的今天</text>
+          <text>我们相遇了</text>
+          <text>一路走到今天</text>
+          <text>谢谢有你的陪伴</text>
+          <text>i love you</text>
+          <!-- <text></text> -->
+        </view>
+      </view>
+   
+  </view>

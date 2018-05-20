@@ -1,0 +1,160 @@
+<style lang="scss">
+// @import '../components/zancss/btn.scss';
+
+// 设置文字向上的动画效果
+@keyframes myfirst {
+  from {
+    bottom: -890rpx;
+  }
+  to {
+    bottom: -200rpx;
+  }
+}
+
+.details {
+  width: 100%;
+  background-image: url('https://om83cysj8.qnssl.com/328193-13122423195078.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .content {
+    font-size: 30rpx;
+    color: #F08080;
+    position: relative;
+    height: 890rpx;
+    width: 500rpx;
+    top: 122rpx;
+    overflow: hidden;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: myfirst 30s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      overflow: hidden;
+    }
+  }
+}
+</style>
+<template>
+  <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="text">
+          <!-- <text>我爱你</text> -->
+          <text>时光轮转</text>
+          <text>又长大一岁</text>
+          <text>去年我在</text>
+          <text>今天我在</text>
+          <text>以后我都在</text>
+          <text>祝你生日快乐</text>
+          <text></text>
+        </view>
+      </view>
+   
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '生日快乐'
+  };
+  components = {};
+
+  data = {
+    windowHeight: '100%' //手机屏幕高度
+  };
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad(options) {
+    let self = this;
+
+    //显示转发
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+
+    // 获取手机信息
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.model);
+        console.log(res.pixelRatio);
+        console.log(res.windowWidth);
+        console.log(res.windowHeight);
+        console.log(res.language);
+        console.log(res.version);
+        console.log(res.platform);
+        self.windowHeight = res.windowHeight;
+      }
+    });
+
+    // 设置背景音乐
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.title = '祝我生日快乐';
+    backgroundAudioManager.epname = '';
+    backgroundAudioManager.singer = '温岚';
+    backgroundAudioManager.coverImgUrl =
+      'https://om83cysj8.qnssl.com/123jjdln%20%28153%29_Fotor.jpg';
+    backgroundAudioManager.src =
+      'https://om83cysj8.qnssl.com/321204083241074.mp3';
+  }
+
+  // 当页面显示的时候
+  onShow() {
+    console.log('show');
+    // 继续播放背景音乐
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.play();
+  }
+  onHide() {
+    console.log('hidden');
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.pause();
+  }
+
+  // 当页面切换（隐藏）的时候
+  onUnload() {
+    console.log('unload');
+    // 暂停背景音乐
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.pause();
+  }
+  // 设置分享卡片
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target);
+    }
+    // 卡片内容
+    return {
+      title: '生日快乐',
+      path: '/appletsA/pages/details/birthday',
+      // 封面图
+      imageUrl:
+        'https://om83cysj8.qnssl.com/a58b9673c02849baaaa007d85de86aaf.jpeg',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    };
+  }
+}
+</script>

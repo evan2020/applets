@@ -71,78 +71,75 @@
 			<image src="{{item}}" class="slide-image"  />
 			</swiper-item>
 		</repeat>
-	</swiper>
+	  </swiper>
 
 	<view class='nineBox'>
 
-	<view class="hot_title">
-		<view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
-		<view class="hot_text">热门推荐</view>
-	</view>
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
+      <view class="hot_text">热门推荐</view>
+    </view>
 
-  
-	 
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCard520">
+      <image src='{{cardImgArr[2]}}' ></image>
+      <text>520</text>
+      </view>
 
-	<view class='row'>
-    <view bindtap='position' class="left" bindtap="routerCard520">
-		<image src='{{cardImgArr[2]}}' ></image>
-		<text>520</text>
-		</view>
+      <view bindtap='position' class="right" bindtap="routerCardDw">
+      <image src='{{cardImgArr[3]}}' ></image>
+      <text>端午节</text>
+      </view>
+    </view>
 
-    <view bindtap='position' class="right" bindtap="routerCardDw">
-		<image src='{{cardImgArr[3]}}' ></image>
-		<text>端午节</text>
-		</view>
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
+      <view class="hot_text">生日贺卡</view>
+    </view>
 
-		
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCardBirthday">
+      <image src='{{cardImgArr[6]}}' ></image>
+      <text>生日快乐</text>
+      </view>
 
-		
-		
-	</view>
-
-	<view class="hot_title">
-		<view class="zan-icon zan-icon-receive-gift"  style="color: #ff4343;"></view>
-		<view class="hot_text">常用贺卡</view>
-	</view>
-
-	<view class='row'>
-
-		
-
-    <view bindtap='position' class="left" bindtap="routerCardMom">
-		<image src='{{cardImgArr[0]}}' ></image>
-		<text>母亲节</text>
-		</view>
-
-    <view bindtap='position' class="right" bindtap="routerCardFather">
-		<image src='{{cardImgArr[1]}}' ></image>
-		<text>父亲节</text>
-		</view>
+      <view bindtap='position' class="right" bindtap="routerCardRemember">
+      <image src='{{cardImgArr[7]}}' ></image>
+      <text>爱情纪念</text>
+      </view>
+    </view>
 
 
-		
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-receive-gift"  style="color: #ff4343;"></view>
+      <view class="hot_text">常用贺卡</view>
+    </view>
 
-		
-	</view>
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCardMom">
+      <image src='{{cardImgArr[0]}}' ></image>
+      <text>母亲节</text>
+      </view>
 
-	<view class='row'>
+      <view bindtap='position' class="right" bindtap="routerCardFather">
+      <image src='{{cardImgArr[1]}}' ></image>
+      <text>父亲节</text>
+      </view>
+    </view>
 
-		<view bindtap='position' class="left" bindtap="routerCardChild">
-		<image src='{{cardImgArr[4]}}'></image>
-		<text>儿童节</text>
-		</view>
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCardChild">
+      <image src='{{cardImgArr[4]}}'></image>
+      <text>儿童节</text>
+      </view>
 
-		<view bindtap='position' class="right" bindtap="routerCardLove"> 
-		<image src='{{cardImgArr[5]}}'></image>
-		<text>七夕</text>
-		</view>
+      <view bindtap='position' class="right" bindtap="routerCardLove"> 
+      <image src='{{cardImgArr[5]}}'></image>
+      <text>七夕</text>
+      </view>
+    </view>
 
-		
-	</view>
-
-	
-
-</view>
+  </view>
 
   </view>
 </template>
@@ -171,13 +168,12 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
-
     // 轮播图跳转
     //banner1跳
     routerHello(e) {
       console.log(e);
-      let index=e.currentTarget.dataset.index;
-      let url=`https://shalou.smallzhiyun.com/express/index.html`;
+      let index = e.currentTarget.dataset.index;
+      let url = `https://shalou.smallzhiyun.com/express/index.html`;
       // if(index==0){
       //   url=`https://shalou.smallzhiyun.com/emotionalParticles/index.html`;
       // }else if(index==1){
@@ -189,8 +185,6 @@ export default class Index extends wepy.page {
         url: `/appletsA/pages/web/hello?url=${url}`
       });
     },
-
-
 
     //跳到卡片页面（母亲节）
     routerCardMom() {
@@ -206,7 +200,21 @@ export default class Index extends wepy.page {
       });
     },
 
-    //跳到卡片页面（520）
+    //跳到卡片页面（生日贺卡）
+    routerCardBirthday() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/birthday`
+      });
+    },
+
+    //跳到卡片页面（纪念日）
+    routerCardRemember() {
+      wx.navigateTo({
+        url: `/appletsA/pages/details/remember`
+      });
+    },
+
+    //跳到卡片页面（端午）
     routerCardDw() {
       wx.navigateTo({
         url: `/appletsA/pages/details/duanwu`
@@ -266,8 +274,6 @@ export default class Index extends wepy.page {
 
   onShow() {
     let self = this;
-
-    
   }
   onReachBottom() {
     console.log('到底了');

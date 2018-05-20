@@ -1,5 +1,4 @@
 <style lang="less">
-
 </style>
 
 <script>
@@ -19,14 +18,16 @@ export default class extends wepy.app {
       {
         root: 'appletsA',
         pages: [
-          'pages/index/index',
-          'pages/text/text',
-          'pages/details/520',
-          'pages/details/duanwu',
-          'pages/details/father',
-          'pages/details/iloveyou',
-          'pages/details/child',
-          'pages/web/hello',
+          'pages/index/index', //首页
+          'pages/text/text', //留言页面
+          'pages/details/520', //520贺卡
+          'pages/details/duanwu', //端午节贺卡
+          'pages/details/father', //父亲节贺卡
+          'pages/details/iloveyou', //七夕贺卡
+          'pages/details/child', //儿童节贺卡
+          'pages/details/birthday', //生日贺卡
+          'pages/details/remember', //纪念日
+          'pages/web/hello' //H5页面
         ]
       },
       {

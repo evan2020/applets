@@ -7,77 +7,74 @@
 			<image src="{{item}}" class="slide-image"/>
 			</swiper-item>
 		</block>
-	</swiper>
+	  </swiper>
 
 	<view class="nineBox">
 
-	<view class="hot_title">
-		<view class="zan-icon zan-icon-hot" style="color: #ff4343;"/>
-		<view class="hot_text">热门推荐</view>
-	</view>
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot" style="color: #ff4343;"/>
+      <view class="hot_text">热门推荐</view>
+    </view>
 
-  
-	 
+    <view class="row">
+      <view bindtap="routerCard520" class="left">
+      <image src="{{cardImgArr[2]}}"/>
+      <text>520</text>
+      </view>
 
-	<view class="row">
-    <view bindtap="routerCard520" class="left">
-		<image src="{{cardImgArr[2]}}"/>
-		<text>520</text>
-		</view>
+      <view bindtap="routerCardDw" class="right">
+      <image src="{{cardImgArr[3]}}"/>
+      <text>端午节</text>
+      </view>
+    </view>
 
-    <view bindtap="routerCardDw" class="right">
-		<image src="{{cardImgArr[3]}}"/>
-		<text>端午节</text>
-		</view>
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot" style="color: #ff4343;"/>
+      <view class="hot_text">生日贺卡</view>
+    </view>
 
-		
+    <view class="row">
+      <view bindtap="routerCardBirthday" class="left">
+      <image src="{{cardImgArr[6]}}"/>
+      <text>生日快乐</text>
+      </view>
 
-		
-		
-	</view>
-
-	<view class="hot_title">
-		<view class="zan-icon zan-icon-receive-gift" style="color: #ff4343;"/>
-		<view class="hot_text">常用贺卡</view>
-	</view>
-
-	<view class="row">
-
-		
-
-    <view bindtap="routerCardMom" class="left">
-		<image src="{{cardImgArr[0]}}"/>
-		<text>母亲节</text>
-		</view>
-
-    <view bindtap="routerCardFather" class="right">
-		<image src="{{cardImgArr[1]}}"/>
-		<text>父亲节</text>
-		</view>
+      <view bindtap="routerCardRemember" class="right">
+      <image src="{{cardImgArr[7]}}"/>
+      <text>爱情纪念</text>
+      </view>
+    </view>
 
 
-		
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-receive-gift" style="color: #ff4343;"/>
+      <view class="hot_text">常用贺卡</view>
+    </view>
 
-		
-	</view>
+    <view class="row">
+      <view bindtap="routerCardMom" class="left">
+      <image src="{{cardImgArr[0]}}"/>
+      <text>母亲节</text>
+      </view>
 
-	<view class="row">
+      <view bindtap="routerCardFather" class="right">
+      <image src="{{cardImgArr[1]}}"/>
+      <text>父亲节</text>
+      </view>
+    </view>
 
-		<view bindtap="routerCardChild" class="left">
-		<image src="{{cardImgArr[4]}}"/>
-		<text>儿童节</text>
-		</view>
+    <view class="row">
+      <view bindtap="routerCardChild" class="left">
+      <image src="{{cardImgArr[4]}}"/>
+      <text>儿童节</text>
+      </view>
 
-		<view bindtap="routerCardLove" class="right"> 
-		<image src="{{cardImgArr[5]}}"/>
-		<text>七夕</text>
-		</view>
+      <view bindtap="routerCardLove" class="right"> 
+      <image src="{{cardImgArr[5]}}"/>
+      <text>七夕</text>
+      </view>
+    </view>
 
-		
-	</view>
-
-	
-
-</view>
+  </view>
 
   </view>
