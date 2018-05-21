@@ -47,6 +47,18 @@
 					"name": "留言区域",
 					"pathName": "appletsB/pages/text/text",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "毕业季视频",
+					"pathName": "appletsA/pages/video/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "手绘视频",
+					"pathName": "appletsA/pages/video/drawing",
+					"query": ""
 				}
 			]
 		}

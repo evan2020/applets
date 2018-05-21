@@ -27,6 +27,8 @@ export default class extends wepy.app {
           'pages/details/child', //儿童节贺卡
           'pages/details/birthday', //生日贺卡
           'pages/details/remember', //纪念日
+          'pages/video/index', //毕业季
+          'pages/video/drawing', //手绘
           'pages/web/hello' //H5页面
         ]
       },

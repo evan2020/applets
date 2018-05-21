@@ -17,16 +17,35 @@
     </view>
 
     <view class="row">
-      <view bindtap="routerCard520" class="left">
-      <image src="{{cardImgArr[2]}}"/>
-      <text>520</text>
+
+      <view bindtap="routerCardVideo" class="left">
+      <image src="{{cardImgArr[8]}}"/>
+      <text>毕业季</text>
       </view>
+
+       <view bindtap="routerCardDrawing" class="left">
+      <image src="{{cardImgArr[9]}}"/>
+      <text>手绘</text>
+      </view>
+
+    </view>
+
+    <view class="row">
 
       <view bindtap="routerCardDw" class="right">
       <image src="{{cardImgArr[3]}}"/>
       <text>端午节</text>
       </view>
+      
+
+      <view bindtap="routerCardChild" class="left">
+      <image src="{{cardImgArr[4]}}"/>
+      <text>儿童节</text>
+      </view>
+
     </view>
+
+     
 
     <view class="hot_title">
       <view class="zan-icon zan-icon-hot" style="color: #ff4343;"/>
@@ -64,10 +83,12 @@
     </view>
 
     <view class="row">
-      <view bindtap="routerCardChild" class="left">
-      <image src="{{cardImgArr[4]}}"/>
-      <text>儿童节</text>
+
+      <view bindtap="routerCard520" class="left">
+      <image src="{{cardImgArr[2]}}"/>
+      <text>520</text>
       </view>
+      
 
       <view bindtap="routerCardLove" class="right"> 
       <image src="{{cardImgArr[5]}}"/>

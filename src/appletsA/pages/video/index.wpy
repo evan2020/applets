@@ -1,0 +1,78 @@
+<style lang="less">
+.container {
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+  }
+}
+</style>
+<template>
+  <view class="container">
+	  <view class="title">
+		  <!-- <image src="https://om82n4ieb.qnssl.com/v2-17bef63e7b994b663183d5668dd57bc4_1200x500.jpg"></image>	 -->
+	  </view>
+
+	  <view style="width:750rpx">
+		  <view class="title">
+		  	<text>建议全屏观看</text>
+			<text style="margin-top:20rpx">毕业季/告白季</text>
+			 <video src="https://om82n4ieb.qnssl.com/job_%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%9F%B3%E4%B9%90.mov" show-fullscreen-btn="true"   controls style="width:750rpx">
+			 </video>
+	  	</view>
+		 
+	  </view>
+
+	   <view style="width:750rpx">
+		    <view class="title">
+				<text>恋爱日记/旅行日记</text>
+				<!-- <text>建议全屏观看</text> -->
+				<video src="https://om82n4ieb.qnssl.com/job_%E5%88%9B%E6%84%8F%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE.mov" show-fullscreen-btn="true"   controls style="width:750rpx">
+				</video>
+	  		</view>
+	  </view>
+
+	  <view style="width:750rpx;color:pink;" class="title">
+		    
+			<text>视频制作请联系客服或者查看关于我们</text>
+				
+	  </view>
+
+	 
+	  
+     
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '视频播放'
+  };
+  components = {};
+
+  data = {};
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad(options) {
+    let self = this;
+
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+  }
+  onShow() {
+    let self = this;
+  }
+}
+</script>

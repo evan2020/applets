@@ -81,16 +81,35 @@
     </view>
 
     <view class='row'>
-      <view bindtap='position' class="left" bindtap="routerCard520">
-      <image src='{{cardImgArr[2]}}' ></image>
-      <text>520</text>
+
+      <view bindtap='position' class="left" bindtap="routerCardVideo">
+      <image src='{{cardImgArr[8]}}'></image>
+      <text>毕业季</text>
       </view>
+
+       <view bindtap='position' class="left" bindtap="routerCardDrawing">
+      <image src='{{cardImgArr[9]}}'></image>
+      <text>手绘</text>
+      </view>
+
+    </view>
+
+    <view class='row'>
 
       <view bindtap='position' class="right" bindtap="routerCardDw">
       <image src='{{cardImgArr[3]}}' ></image>
       <text>端午节</text>
       </view>
+      
+
+      <view bindtap='position' class="left" bindtap="routerCardChild">
+      <image src='{{cardImgArr[4]}}'></image>
+      <text>儿童节</text>
+      </view>
+
     </view>
+
+     
 
     <view class="hot_title">
       <view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
@@ -128,10 +147,12 @@
     </view>
 
     <view class='row'>
-      <view bindtap='position' class="left" bindtap="routerCardChild">
-      <image src='{{cardImgArr[4]}}'></image>
-      <text>儿童节</text>
+
+      <view bindtap='position' class="left" bindtap="routerCard520">
+      <image src='{{cardImgArr[2]}}' ></image>
+      <text>520</text>
       </view>
+      
 
       <view bindtap='position' class="right" bindtap="routerCardLove"> 
       <image src='{{cardImgArr[5]}}'></image>
@@ -183,6 +204,20 @@ export default class Index extends wepy.page {
       // }
       wx.navigateTo({
         url: `/appletsA/pages/web/hello?url=${url}`
+      });
+    },
+
+    //跳到卡片页面（毕业季）
+    routerCardDrawing() {
+      wx.navigateTo({
+        url: `/appletsA/pages/video/drawing`
+      });
+    },
+
+     //跳到卡片页面（毕业季）
+    routerCardVideo() {
+      wx.navigateTo({
+        url: `/appletsA/pages/video/index`
       });
     },
 

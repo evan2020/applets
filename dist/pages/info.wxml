@@ -53,7 +53,7 @@
         </view>
 
         <view class="zan-cell" bindtap="routerToAbout">
-            <view class="zan-cell__icon zan-icon zan-icon-contact" style="color:#38f;"/>
+            <view class="zan-cell__icon zan-icon zan-icon-wap-home" style="color:#38f;"/>
             <view class="zan-cell__bd"> <button plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">关于我们</button></view>
             <view class="zan-cell__ft"/>
         </view>
