@@ -8,7 +8,7 @@
 		  <view class="title">
 		  	<text>建议全屏观看</text>
 			<text style="margin-top:20rpx">毕业季/告白季</text>
-			 <video src="https://om82n4ieb.qnssl.com/job_%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%9F%B3%E4%B9%90.mov" show-fullscreen-btn="true" controls style="width:750rpx">
+			 <video src="https://om82n4ieb.qnssl.com/job_%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%9F%B3%E4%B9%90.mov" show-fullscreen-btn="true" controls poster="https://om83cysj8.qnssl.com/QQ20180521-142628_meitu_4.jpg" style="width:750rpx">
 			 </video>
 	  	</view>
 		 
@@ -18,7 +18,7 @@
 		    <view class="title">
 				<text>恋爱日记/旅行日记</text>
 				<!-- <text>建议全屏观看</text> -->
-				<video src="https://om82n4ieb.qnssl.com/job_%E5%88%9B%E6%84%8F%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE.mov" show-fullscreen-btn="true" controls style="width:750rpx">
+				<video src="https://om82n4ieb.qnssl.com/job_%E5%88%9B%E6%84%8F%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%A1%B9%E7%9B%AE.mov" show-fullscreen-btn="true" controls style="width:750rpx" poster="https://om83cysj8.qnssl.com/WechatIMG658_meitu_5.jpg">
 				</video>
 	  		</view>
 	  </view>

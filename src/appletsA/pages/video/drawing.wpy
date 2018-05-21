@@ -22,7 +22,9 @@
 		    <view class="title">
 				<text>建议全屏观看</text>
 				<text style="margin-top:20rpx">手绘</text>
-				<video src="https://om82n4ieb.qnssl.com/job_%E6%89%8B%E7%BB%98.mp4" show-fullscreen-btn="true"   controls style="width:750rpx">
+				<video src="https://om82n4ieb.qnssl.com/job_%E6%89%8B%E7%BB%98.mp4" show-fullscreen-btn="true"   controls style="width:750rpx"
+				poster="https://om83cysj8.qnssl.com/QQ20180521-143612_meitu_6.jpg"
+				>
 				</video>
 	  		</view>
 	  </view>
@@ -31,7 +33,9 @@
 		    <view class="title">
 				<!-- <text>建议全屏观看</text> -->
 				<text style="margin-top:20rpx">手写爱</text>
-				<video src="https://om82n4ieb.qnssl.com/job_%E6%89%8B%E5%86%99%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%EF%BC%88%E6%89%8B%E5%86%99%E5%AD%97%E4%BD%93%E5%92%8C%E6%B8%A9%E9%A6%A8%E9%85%8D%E8%89%B2%E5%B8%A6%E8%83%8C%E6%99%AF%E9%9F%B3%EF%BC%89.mov" show-fullscreen-btn="true"   controls style="width:750rpx">
+				<video src="https://om82n4ieb.qnssl.com/job_%E6%89%8B%E5%86%99%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%EF%BC%88%E6%89%8B%E5%86%99%E5%AD%97%E4%BD%93%E5%92%8C%E6%B8%A9%E9%A6%A8%E9%85%8D%E8%89%B2%E5%B8%A6%E8%83%8C%E6%99%AF%E9%9F%B3%EF%BC%89.mov" show-fullscreen-btn="true"   controls style="width:750rpx"
+				poster="https://om83cysj8.qnssl.com/QQ20180521-143748_meitu_7.jpg"
+				>
 				</video>
 	  		</view>
 	  </view>
