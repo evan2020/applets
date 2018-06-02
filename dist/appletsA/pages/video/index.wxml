@@ -4,15 +4,19 @@
 		  <!-- <image src="https://om82n4ieb.qnssl.com/v2-17bef63e7b994b663183d5668dd57bc4_1200x500.jpg"></image>	 -->
 	  </view>
 
-	  <view style="width:750rpx">
+	  <!-- <view style="width:750rpx">
 		  <view class="title">
 		  	<text>建议全屏观看</text>
-			<text style="margin-top:20rpx">毕业季/告白季</text>
-			 <video src="https://om82n4ieb.qnssl.com/job_%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%9F%B3%E4%B9%90.mov" show-fullscreen-btn="true" controls poster="https://om83cysj8.qnssl.com/QQ20180521-142628_meitu_4.jpg" style="width:750rpx">
-			 </video>
+			  <text style="margin-top:20rpx">毕业季/告白季</text>
+        <video src="https://om82n4ieb.qnssl.com/job_%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%9F%B3%E4%B9%90.mov" 
+        show-fullscreen-btn="true"   
+        controls
+        poster="https://om83cysj8.qnssl.com/QQ20180521-142628_meitu_4.jpg" 
+        style="width:750rpx">
+        </video>
 	  	</view>
 		 
-	  </view>
+	  </view> -->
 
 	   <view style="width:750rpx">
 		    <view class="title">
@@ -25,7 +29,7 @@
 
 	  <view style="width:750rpx;color:pink;" class="title">
 		    
-			<text>视频制作请联系客服或者查看关于我们</text>
+			<!-- <text>视频制作请联系客服或者查看关于我们</text> -->
 				
 	  </view>
 

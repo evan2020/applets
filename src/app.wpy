@@ -67,7 +67,91 @@ export default class extends wepy.app {
     userInfo: null
   };
 
+  diyEvant() {
+    let self = this;
+    console.log(`自定义数据上报`);
+    let SystemInfo = {};
+    // 获取系统信息
+    wx.getSystemInfo({
+      success: function(res) {
+        SystemInfo = { ...res };
+        // console.log(SystemInfo);
+      }
+    });
+    // 获取网络类型。
+    wx.getNetworkType({
+      success: function(res) {
+        // 返回网络类型, 有效值：
+        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        let networkType = res.networkType;
+        SystemInfo.networkType = networkType;
+        // console.log(res.networkType);
+      }
+    });
+    // 获取剪切板内容
+    wx.getClipboardData({
+      success: function(res) {
+        // console.log(res.data);
+        SystemInfo.ClipboardData = res.data;
+      }
+    });
+
+    // 获取屏幕亮度
+    wx.getScreenBrightness({
+      success: function(res) {
+        // console.log(res.value);
+        SystemInfo.ScreenBrightness = res.value;
+      }
+    });
+
+    // 判断当前设备是否支持 HCE 能力。
+    wx.getHCEState({
+      success: function(res) {
+        // console.log(res);
+        SystemInfo.HCEState = res;
+      },
+      fail: function(err) {
+        // console.log(err);
+      }
+    });
+    // 获取已连接中的 Wi-Fi 信息
+    wx.getConnectedWifi({
+      success: function(res) {
+        // console.log(res.wifi);
+        SystemInfo.wifi = res.wifi;
+      },
+      fail: function(err) {
+        // console.log(err);
+      }
+    });
+    setTimeout(() => {
+      console.log('sys', SystemInfo);
+      wx.reportAnalytics('user_info_one', {
+        brand: SystemInfo.brand,
+        model: SystemInfo.model,
+        pixelratio: SystemInfo.pixelRatio,
+        screenwidth: SystemInfo.screenWidth,
+        screenheight: SystemInfo.screenHeight,
+        windowwidth: SystemInfo.windowWidth,
+        windowheight: SystemInfo.windowHeight,
+        language: SystemInfo.language,
+        version: SystemInfo.version,
+        system: SystemInfo.system,
+        platform: SystemInfo.platform,
+        fontsizesetting: SystemInfo.fontSizeSetting,
+        sdkversion: SystemInfo.SDKVersion,
+        networktype: SystemInfo.networkType,
+        clipboarddata: SystemInfo.ClipboardData,
+        screenbrightness: SystemInfo.ScreenBrightness,
+        hcestate: SystemInfo.HCEState,
+        wifi: SystemInfo.wifi
+      });
+    }, 1000);
+  }
+
   onLaunch() {
+    let self = this;
+
     // 引入知晓云SDK
     require('./utils/sdk-v1.4.0.js');
 
@@ -92,6 +176,14 @@ export default class extends wepy.app {
     updateManager.onUpdateFailed(function() {
       // 新的版本下载失败
     });
+
+    // 监听用户截屏
+    wx.onUserCaptureScreen(function(res) {
+      console.log('用户截屏了');
+    });
+
+    // 设置自定义数据上报
+    self.diyEvant();
   }
 }
 </script>

@@ -42,7 +42,7 @@
 
 	  <view style="width:750rpx;color:pink;" class="title">
 		    
-			<text>视频制作请联系客服或者查看关于我们</text>
+			<!-- <text>视频制作请联系客服或者查看关于我们</text> -->
 				
 	  </view>
 
