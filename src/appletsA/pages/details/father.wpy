@@ -180,6 +180,22 @@ export default class Index extends wepy.page {
         'https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg',
       success: function(res) {
         // 转发成功
+        let card_time = new Date();
+        // 获取用户存储的用户信息
+        let userinfo = wx.BaaS.storage.get(`userinfo`);
+        // 设置头像和名称
+        let user_name = userinfo.nickName || `未登录游客`;
+        let user_openid = userinfo.openid || `无openid`;
+        let user_gender = userinfo.gender || `无`;
+        console.log(`转发成功`, card_time, user_name, user_openid, user_gender);
+        // 自定义事件上报（分享事件）
+        wx.reportAnalytics('share_card', {
+          card_name: `父亲节贺卡`,
+          user_name,
+          card_time,
+          user_openid,
+          user_gender,
+        });
       },
       fail: function(res) {
         // 转发失败

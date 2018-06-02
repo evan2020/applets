@@ -180,6 +180,10 @@ export default class extends wepy.app {
     // 监听用户截屏
     wx.onUserCaptureScreen(function(res) {
       console.log('用户截屏了');
+      // 截屏事件上报
+      wx.reportAnalytics('capture_screen', {
+        capturescreen: '1'
+      });
     });
 
     // 设置自定义数据上报

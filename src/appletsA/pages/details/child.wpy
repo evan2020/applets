@@ -21,7 +21,6 @@
   flex-direction: column;
   align-items: center;
 
-
   .content {
     font-size: 30rpx;
     color: #ff9933;
@@ -76,7 +75,7 @@ export default class Index extends wepy.page {
     windowHeight: '100%' //手机屏幕高度
   };
 
-    // 处理传递过来的信息
+  // 处理传递过来的信息
   RegMsg() {
     let self = this;
     let msg = self.msg;
@@ -177,13 +176,29 @@ export default class Index extends wepy.page {
       title: '儿童节快乐',
       path: `/appletsA/pages/details/child?msg=${self.msg}`,
       // 封面图
-      imageUrl:
-        'https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg',
+      imageUrl: 'https://om83cysj8.qnssl.com/tooopen_sy_162661186586.jpg',
       success: function(res) {
         // 转发成功
+        let card_time = new Date();
+        // 获取用户存储的用户信息
+        let userinfo = wx.BaaS.storage.get(`userinfo`);
+        // 设置头像和名称
+        let user_name = userinfo.nickName || `未登录游客`;
+        let user_openid = userinfo.openid || `无openid`;
+        let user_gender = userinfo.gender || `无`;
+        console.log(`转发成功`, card_time, user_name, user_openid, user_gender);
+        // 自定义事件上报（分享事件）
+        wx.reportAnalytics('share_card', {
+          card_name: `六一儿童节贺卡`,
+          user_name,
+          card_time,
+          user_openid,
+          user_gender,
+        });
       },
       fail: function(res) {
         // 转发失败
+        console.log(`转发失败`);
       }
     };
   }
