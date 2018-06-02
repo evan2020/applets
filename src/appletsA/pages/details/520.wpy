@@ -196,6 +196,35 @@ export default class Index extends wepy.page {
           user_openid,
           user_gender,
         });
+        // 设置模板消息通知
+        // 向 tableID 为 39006 的数据表插入一条记录
+        let tableID = 39006;
+        let Product = new wx.BaaS.TableObject(tableID);
+        let product = Product.create();
+
+        // 设置方式一
+        let apple = {
+          send_card: 'Email',
+          user_name,
+          user_gender,
+          user_openid,
+          card_time,
+          card_content:self.msg,
+          card_name: '520',
+        };
+
+        product
+          .set(apple)
+          .save()
+          .then(
+            res => {
+              // success
+              console.log(`创建表成功`)
+            },
+            err => {
+              // err
+            }
+          );
       },
       fail: function(res) {
         // 转发失败
