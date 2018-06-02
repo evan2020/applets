@@ -1,5 +1,10 @@
 
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+    <!-- 音乐图标 -->
+    <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
+      <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png" style="width:50%;height:50%">
+      </image>
+    </view>
       <view class="content">
         <!-- 祝福语 -->
        <view class="text">

@@ -11,6 +11,15 @@
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .details {
   width: 100%;
   background-image: url('https://om83cysj8.qnssl.com/36f3d726bc9d628873dedd475c92dfe5cd133bf4131c8-laAYJl_fw658.jpeg');
@@ -20,6 +29,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .music {
+    animation: rotate 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    text-align: center;
+    position: absolute;
+    top: 50rpx;
+    right: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .content {
     font-size: 30rpx;
@@ -46,6 +75,11 @@
 </style>
 <template>
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+     <!-- 音乐图标 -->
+    <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
+      <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png" style="width:50%;height:50%">
+      </image>
+    </view>
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
@@ -72,7 +106,21 @@ export default class Index extends wepy.page {
   data = {
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
+    musicState: `running`, //音乐图片动画是否暂停
     windowHeight: '100%' //手机屏幕高度
+  };
+
+  watch = {
+    //  暂停/播放音乐
+    musicState(newValue, oldValue) {
+      console.log(`musicState value: ${oldValue} -> ${newValue}`);
+      const backgroundAudioManager = wx.getBackgroundAudioManager();
+      if (newValue == `running`) {
+        backgroundAudioManager.play();
+      } else {
+        backgroundAudioManager.pause();
+      }
+    }
   };
 
     // 处理传递过来的信息
@@ -98,7 +146,19 @@ export default class Index extends wepy.page {
 
   computed = {};
 
-  methods = {};
+  methods = {
+    // 切换音乐图标旋转
+    toggleMusic() {
+      let self = this;
+      console.log(`toggle`);
+      if (self.musicState == 'running') {
+        self.musicState = `paused`;
+      } else {
+        self.musicState = `running`;
+      }
+      self.$apply();
+    }
+  };
 
   events = {};
 

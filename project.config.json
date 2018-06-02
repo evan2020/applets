@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -58,6 +58,12 @@
 					"id": -1,
 					"name": "手绘视频",
 					"pathName": "appletsA/pages/video/drawing",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "儿童节贺卡",
+					"pathName": "appletsA/pages/details/child",
 					"query": ""
 				}
 			]
