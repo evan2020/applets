@@ -3,17 +3,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <text>小时候</text>
-          <text>父亲就是颗参天大树</text>
-          <text>为我们遮风挡雨</text>
-          <text>长大了</text>
-          <text>父亲成了本百科全书</text>
-          <text>为我们答疑解惑</text>
-          <text>父亲，永远是我们的支柱</text>
-          <text>爸爸</text>
-          <text>节日快乐</text>
-         
-          <text/>
+		  <view style=""> 
+			  <block wx:for="{{text}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+ 				<view>{{item}}</view>
+			  </block>
+			</view>
         </view>
       </view>
    

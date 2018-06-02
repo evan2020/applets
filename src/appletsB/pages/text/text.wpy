@@ -44,12 +44,13 @@ export default class Index extends wepy.page {
       maxlength: 100, //最大输入长度，设置为 -1 的时候不限制最大长度
       focus: false //获取焦点
     },
-    text:[],//转化后的文本
+    text: [], //转化后的文本
+    router: `` //留言之后跳转的页面
   };
 
   // 处理文本信息
   RegMsg() {
-    console.log(`文本处理start`)
+    console.log(`文本处理start`);
     let self = this;
     let msg = self.textarea.msg;
     let testArr = [];
@@ -67,7 +68,7 @@ export default class Index extends wepy.page {
     testArr.push(msg.substring(start, msg.length));
     self.text = testArr;
     self.$apply();
-    console.log(`文本处理end`)
+    console.log(`文本处理end`);
   }
 
   computed = {};
@@ -87,18 +88,10 @@ export default class Index extends wepy.page {
       let msg = self.textarea.msg;
       console.log(self.text);
 
-      // 如果标识为刮刮乐，则跳转刮刮乐留言页面
-      if (self.type == `prize`) {
-        let url = `https://shalou.smallzhiyun.com/prize/index.html`;
-        wx.navigateTo({
-          url: `/appletsA/pages/web/hello?url=${url}&msg=${msg}`
-        });
-      } else if (self.type == `CardDw`) {
-        // 如果表示为端午卡片，跳转端午贺卡页面
-        wx.navigateTo({
-          url: `/appletsA/pages/details/duanwu?msg=${msg}`
-        });
-      }
+      let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+      wx.navigateTo({
+        url: `${self.router}?url=${url}&msg=${msg}`
+      });
     }
   };
 
@@ -107,6 +100,7 @@ export default class Index extends wepy.page {
   onLoad(options) {
     let self = this;
     self.type = options.type;
+    self.router = options.router;
     self.$apply();
     console.log(options);
   }

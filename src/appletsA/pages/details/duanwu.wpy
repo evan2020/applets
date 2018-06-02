@@ -1,6 +1,4 @@
 <style lang="scss">
-// @import '../components/zancss/btn.scss';
-
 // 设置文字向上的动画效果
 @keyframes myfirst {
   from {
@@ -49,11 +47,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-		  <view style=""> 
-			  <repeat for="{{text}}" key="index" item="item">
- 				<view>{{item}}</view>
-			  </repeat>
-			</view>
+          <view style=""> 
+            <repeat for="{{text}}" key="index" item="item">
+            <view>{{item}}</view>
+            </repeat>
+          </view>
         </view>
       </view>
    
@@ -70,7 +68,6 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
-    type: ``, //上一级页面类型
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
     windowHeight: '100%' //手机屏幕高度
@@ -105,7 +102,6 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
-    self.type = options.type;
 
     if (options.msg) {
       self.msg = options.msg;
@@ -115,7 +111,6 @@ export default class Index extends wepy.page {
     }
     self.RegMsg();
     self.$apply();
-    console.log(`type`, typeof options.text);
 
     //显示转发
     wx.showShareMenu({
@@ -161,6 +156,7 @@ export default class Index extends wepy.page {
   }
   // 设置分享卡片
   onShareAppMessage(res) {
+    let self = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
@@ -168,7 +164,7 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '端午节快乐',
-      path: '/appletsA/pages/details/duanwu',
+      path: `/appletsA/pages/details/duanwu?msg=${self.msg}`,
       // 封面图
       imageUrl: 'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
       success: function(res) {

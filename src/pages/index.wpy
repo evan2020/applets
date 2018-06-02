@@ -207,7 +207,7 @@ export default class Index extends wepy.page {
       });
     },
 
-    //跳到卡片页面（手绘）
+        //跳到卡片页面（手绘）
     routerCardDrawing() {
       wx.navigateTo({
         url: `/appletsA/pages/video/drawing`
@@ -220,61 +220,68 @@ export default class Index extends wepy.page {
         url: `/appletsA/pages/video/index`
       });
     },
-
+    
     //跳到卡片页面（母亲节）
     routerCardMom() {
+      let router=`/pages/details/details`;
       wx.navigateTo({
-        url: `/pages/details/details`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（520）
     routerCard520() {
+      let router=`/appletsA/pages/details/520`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/520`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（生日贺卡）
     routerCardBirthday() {
+       let router=`/appletsA/pages/details/birthday`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/birthday`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（纪念日）
     routerCardRemember() {
+      let router=`/appletsA/pages/details/remember`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/remember`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（端午）
     routerCardDw() {
-      let type=`CardDw`;
+      let router=`/appletsA/pages/details/duanwu`;
       wx.navigateTo({
-        url: `/appletsB/pages/text/text?type=${type}`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（父亲节）
     routerCardFather() {
+      let router=`/appletsA/pages/details/father`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/father`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（七夕）
     routerCardLove() {
+      let router=`/appletsA/pages/details/iloveyou`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/iloveyou`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     },
 
     //跳到卡片页面（儿童节）
     routerCardChild() {
+      let router=`/appletsA/pages/details/child`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/child`
+        url: `/appletsB/pages/text/text?router=${router}`
       });
     }
   };

@@ -2,15 +2,12 @@
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
       <view class="content">
         <!-- 祝福语 -->
-        <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>时光轮转</text>
-          <text>又长大一岁</text>
-          <text>去年我在</text>
-          <text>今天我在</text>
-          <text>以后我都在</text>
-          <text>祝你生日快乐</text>
-          <text/>
+         <view class="text">
+		  <view style=""> 
+			  <block wx:for="{{text}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+ 				<view>{{item}}</view>
+			  </block>
+			</view>
         </view>
       </view>
    

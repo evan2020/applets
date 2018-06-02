@@ -49,17 +49,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <text>小时候</text>
-          <text>父亲就是颗参天大树</text>
-          <text>为我们遮风挡雨</text>
-          <text>长大了</text>
-          <text>父亲成了本百科全书</text>
-          <text>为我们答疑解惑</text>
-          <text>父亲，永远是我们的支柱</text>
-          <text>爸爸</text>
-          <text>节日快乐</text>
-         
-          <text></text>
+		  <view style=""> 
+			  <repeat for="{{text}}" key="index" item="item">
+ 				<view>{{item}}</view>
+			  </repeat>
+			</view>
         </view>
       </view>
    
@@ -76,8 +70,31 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
+    msg: ``, //输入框的内容
+    text: ``, //格式化之后要展示的内容
     windowHeight: '100%' //手机屏幕高度
   };
+
+    // 处理传递过来的信息
+  RegMsg() {
+    let self = this;
+    let msg = self.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+  }
 
   computed = {};
 
@@ -87,6 +104,15 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+
+    if (options.msg) {
+      self.msg = options.msg;
+    } else {
+      // 默认留言
+      self.msg = `小时候，父亲就是颗参天大树，为我们遮风挡雨，长大了，父亲成了本百科全书，为我们答疑解惑，父亲，永远是我们的支柱，爸爸，节日快乐`;
+    }
+    self.RegMsg();
+    self.$apply();
 
     //显示转发
     wx.showShareMenu({
@@ -140,6 +166,7 @@ export default class Index extends wepy.page {
   }
   // 设置分享卡片
   onShareAppMessage(res) {
+    let self = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
@@ -147,7 +174,7 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '父亲节快乐',
-      path: '/appletsA/pages/details/father',
+      path: `/appletsA/pages/details/father?msg=${self.msg}`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg',

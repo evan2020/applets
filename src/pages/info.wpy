@@ -131,9 +131,9 @@ export default class Index extends wepy.page {
     // 跳转编辑留言页面（点击刮刮乐）
     routerToPrize() {
       let url = `https://shalou.smallzhiyun.com/prize/index.html`;
-      let type=`prize`
+      let router=`/appletsA/pages/web/hello`
       wx.navigateTo({
-        url: `/appletsB/pages/text/text?url=${url}&type=${type}`
+        url: `/appletsB/pages/text/text?url=${url}&router=${router}`
       });
     },
 

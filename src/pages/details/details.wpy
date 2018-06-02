@@ -48,18 +48,12 @@
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
       <view class="content">
         <!-- 祝福语 -->
-        <view class="text">
-          <text>父母在，不远游</text>
-          <text>不在你们身边的时候</text>
-          <text>希望你们能照顾好自己</text>
-          <text>无论繁忙劳碌</text>
-          <text>还是游玩休闲</text>
-          <text>愿身体健康</text>
-          <text>愿心想事成</text>
-          <text>妈妈</text>
-          <text>在这个特殊的日子</text>
-          <text>祝你节日快乐</text>
-          <text></text>
+       <view class="text">
+          <view style=""> 
+            <repeat for="{{text}}" key="index" item="item">
+            <view>{{item}}</view>
+            </repeat>
+          </view>
         </view>
       </view>
    
@@ -76,8 +70,31 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
+    msg: ``, //输入框的内容
+    text: ``, //格式化之后要展示的内容
     windowHeight: '100%' //手机屏幕高度
   };
+
+  // 处理传递过来的信息
+  RegMsg() {
+    let self = this;
+    let msg = self.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+  }
 
   computed = {};
 
@@ -87,6 +104,15 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+
+    if (options.msg) {
+      self.msg = options.msg;
+    } else {
+      // 默认留言
+      self.msg = `父母在，不远游，不在你们身边的时候，希望你们能照顾好自己，无论繁忙劳碌，还是游玩休闲，愿身体健康，愿心想事成，妈妈，在这个特殊的日子，祝你节日快乐`;
+    }
+    self.RegMsg();
+    self.$apply();
 
     //显示转发
     wx.showShareMenu({
@@ -140,6 +166,7 @@ export default class Index extends wepy.page {
   }
   // 设置分享卡片
   onShareAppMessage(res) {
+    let self = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
@@ -147,7 +174,7 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '妈妈',
-      path: '/pages/details/details',
+      path: `/pages/details/details?msg=${self.msg}`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',

@@ -49,15 +49,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>他们说</text>
-          <text>这个世界上</text>
-          <text>海最深邃</text>
-          <text>干净又透明</text>
-          <text>我想</text>
-          <text>那是他们没见过你的眼睛</text>
-         
-          <text></text>
+		  <view style=""> 
+			  <repeat for="{{text}}" key="index" item="item">
+ 				<view>{{item}}</view>
+			  </repeat>
+			</view>
         </view>
       </view>
    
@@ -74,8 +70,31 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
+    msg: ``, //输入框的内容
+    text: ``, //格式化之后要展示的内容
     windowHeight: '100%' //手机屏幕高度
   };
+
+    // 处理传递过来的信息
+  RegMsg() {
+    let self = this;
+    let msg = self.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+  }
 
   computed = {};
 
@@ -85,6 +104,15 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+
+    if (options.msg) {
+      self.msg = options.msg;
+    } else {
+      // 默认留言
+      self.msg = `他们说，这个世界上，海最深邃，干净又透明，我想，那是他们没见过你的眼睛`;
+    }
+    self.RegMsg();
+    self.$apply();
 
     //显示转发
     wx.showShareMenu({
@@ -138,6 +166,7 @@ export default class Index extends wepy.page {
   }
   // 设置分享卡片
   onShareAppMessage(res) {
+    let self = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);
@@ -145,7 +174,7 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '我爱你',
-      path: '/appletsA/pages/details/520',
+      path: `/appletsA/pages/details/520?msg=${self.msg}`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/33809_2014021217065921537600.jpg',

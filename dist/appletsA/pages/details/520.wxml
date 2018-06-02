@@ -3,15 +3,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <!-- <text>我爱你</text> -->
-          <text>他们说</text>
-          <text>这个世界上</text>
-          <text>海最深邃</text>
-          <text>干净又透明</text>
-          <text>我想</text>
-          <text>那是他们没见过你的眼睛</text>
-         
-          <text/>
+		  <view style=""> 
+			  <block wx:for="{{text}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+ 				<view>{{item}}</view>
+			  </block>
+			</view>
         </view>
       </view>
    
