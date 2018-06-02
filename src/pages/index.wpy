@@ -80,6 +80,22 @@
       <view class="hot_text">热门推荐</view>
     </view>
 
+     <view class='row'>
+
+      <view bindtap='position' class="right" bindtap="routerCardDw">
+      <image src='{{cardImgArr[3]}}' ></image>
+      <text>端午节</text>
+      </view>
+      
+      <view bindtap='position' class="right" bindtap="routerCardFather">
+      <image src='{{cardImgArr[1]}}' ></image>
+      <text>父亲节</text>
+      </view>
+      
+      
+
+    </view>
+
     <view class='row'>
 
       <view bindtap='position' class="left" bindtap="routerCardVideo">
@@ -94,20 +110,7 @@
 
     </view>
 
-    <view class='row'>
-
-      <view bindtap='position' class="right" bindtap="routerCardDw">
-      <image src='{{cardImgArr[3]}}' ></image>
-      <text>端午节</text>
-      </view>
-      
-
-      <view bindtap='position' class="left" bindtap="routerCardChild">
-      <image src='{{cardImgArr[4]}}'></image>
-      <text>儿童节</text>
-      </view>
-
-    </view>
+   
 
      
 
@@ -140,10 +143,13 @@
       <text>母亲节</text>
       </view>
 
-      <view bindtap='position' class="right" bindtap="routerCardFather">
-      <image src='{{cardImgArr[1]}}' ></image>
-      <text>父亲节</text>
+      
+
+      <view bindtap='position' class="left" bindtap="routerCardChild">
+      <image src='{{cardImgArr[4]}}'></image>
+      <text>儿童节</text>
       </view>
+
     </view>
 
     <view class='row'>
@@ -190,40 +196,41 @@ export default class Index extends wepy.page {
 
   methods = {
     // 轮播图跳转
-    //banner1跳
     routerHello(e) {
       console.log(e);
       let index = e.currentTarget.dataset.index;
       let url = `https://shalou.smallzhiyun.com/express/index.html`;
-      // if(index==0){
-      //   url=`https://shalou.smallzhiyun.com/emotionalParticles/index.html`;
-      // }else if(index==1){
-      //   url=`https://shalou.smallzhiyun.com/express/index.html`;
-      // }else if(index==2){
-      //   url=`https://shalou.smallzhiyun.com/lottery/lottery.html`;
-      // }
-      wx.navigateTo({
-        url: `/appletsA/pages/web/hello?url=${url}`
-      });
+      if(index==0){
+        console.log(`点击第一张`)
+      }else if(index==1){
+        console.log(`点击第二张`)
+        
+      }else if(index==2){
+        console.log(`点击第三张`)
+        
+      }
+      // wx.navigateTo({
+      //   url: `/appletsA/pages/web/hello?url=${url}`
+      // });
     },
 
-        //跳到卡片页面（手绘）
+    //跳到卡片页面（手绘）
     routerCardDrawing() {
       wx.navigateTo({
         url: `/appletsA/pages/video/drawing`
       });
     },
 
-     //跳到卡片页面（毕业季）
+    //跳到卡片页面（毕业季）
     routerCardVideo() {
       wx.navigateTo({
         url: `/appletsA/pages/video/index`
       });
     },
-    
+
     //跳到卡片页面（母亲节）
     routerCardMom() {
-      let router=`/pages/details/details`;
+      let router = `/pages/details/details`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -231,7 +238,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（520）
     routerCard520() {
-      let router=`/appletsA/pages/details/520`;
+      let router = `/appletsA/pages/details/520`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -239,7 +246,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（生日贺卡）
     routerCardBirthday() {
-       let router=`/appletsA/pages/details/birthday`;
+      let router = `/appletsA/pages/details/birthday`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -247,7 +254,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（纪念日）
     routerCardRemember() {
-      let router=`/appletsA/pages/details/remember`;
+      let router = `/appletsA/pages/details/remember`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -255,7 +262,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（端午）
     routerCardDw() {
-      let router=`/appletsA/pages/details/duanwu`;
+      let router = `/appletsA/pages/details/duanwu`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -263,7 +270,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（父亲节）
     routerCardFather() {
-      let router=`/appletsA/pages/details/father`;
+      let router = `/appletsA/pages/details/father`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -271,7 +278,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（七夕）
     routerCardLove() {
-      let router=`/appletsA/pages/details/iloveyou`;
+      let router = `/appletsA/pages/details/iloveyou`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });
@@ -279,7 +286,7 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（儿童节）
     routerCardChild() {
-      let router=`/appletsA/pages/details/child`;
+      let router = `/appletsA/pages/details/child`;
       wx.navigateTo({
         url: `/appletsB/pages/text/text?router=${router}`
       });

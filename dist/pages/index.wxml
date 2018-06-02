@@ -16,6 +16,22 @@
       <view class="hot_text">热门推荐</view>
     </view>
 
+     <view class="row">
+
+      <view bindtap="routerCardDw" class="right">
+      <image src="{{cardImgArr[3]}}"/>
+      <text>端午节</text>
+      </view>
+      
+      <view bindtap="routerCardFather" class="right">
+      <image src="{{cardImgArr[1]}}"/>
+      <text>父亲节</text>
+      </view>
+      
+      
+
+    </view>
+
     <view class="row">
 
       <view bindtap="routerCardVideo" class="left">
@@ -30,20 +46,7 @@
 
     </view>
 
-    <view class="row">
-
-      <view bindtap="routerCardDw" class="right">
-      <image src="{{cardImgArr[3]}}"/>
-      <text>端午节</text>
-      </view>
-      
-
-      <view bindtap="routerCardChild" class="left">
-      <image src="{{cardImgArr[4]}}"/>
-      <text>儿童节</text>
-      </view>
-
-    </view>
+   
 
      
 
@@ -76,10 +79,13 @@
       <text>母亲节</text>
       </view>
 
-      <view bindtap="routerCardFather" class="right">
-      <image src="{{cardImgArr[1]}}"/>
-      <text>父亲节</text>
+      
+
+      <view bindtap="routerCardChild" class="left">
+      <image src="{{cardImgArr[4]}}"/>
+      <text>儿童节</text>
       </view>
+
     </view>
 
     <view class="row">
