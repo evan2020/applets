@@ -2,12 +2,21 @@
   <view class="container">
 
       <view class="myInfo">
+
+        <view class="avatar">
+          <open-data type="userAvatarUrl"/>
+        </view>
+         <view class="name">
+                <open-data type="userNickName"/>
+            </view>
+        
+       
           
-              <image mode="aspectFit" src="{{avatar}}" class="avatar"/>
+            <!-- <image mode="aspectFit" src="{{avatar}}" class="avatar"></image>
             
             <view class="name">
                 {{name}}
-            </view>
+            </view> -->
             
            
       </view>

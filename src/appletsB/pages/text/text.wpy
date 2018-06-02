@@ -74,6 +74,7 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
+    // 存储消息
     getMsg(e) {
       let self = this;
 
@@ -83,6 +84,7 @@ export default class Index extends wepy.page {
       // console.log(e.detail.value);
     },
 
+    // 发送消息
     sendMsg() {
       let self = this;
       let msg = self.textarea.msg;
@@ -101,6 +103,13 @@ export default class Index extends wepy.page {
     let self = this;
     self.type = options.type;
     self.router = options.router;
+    if (options.RecordFilePath) {
+      wx.playVoice({
+        filePath: options.RecordFilePath,
+        complete: function() {}
+      });
+    }
+
     self.$apply();
     console.log(options);
   }
