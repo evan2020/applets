@@ -9,7 +9,7 @@
 
     <view class="test_less">
       <text>留言</text>
-      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="我爱你" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;" value="{{textarea.msg}}"/>
+      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;" value="{{textarea.msg}}"/>
       <button type="primary" bindtap="sendMsg">发送</button>
     </view>
 

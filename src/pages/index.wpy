@@ -207,7 +207,7 @@ export default class Index extends wepy.page {
       });
     },
 
-    //跳到卡片页面（毕业季）
+    //跳到卡片页面（手绘）
     routerCardDrawing() {
       wx.navigateTo({
         url: `/appletsA/pages/video/drawing`
@@ -251,8 +251,9 @@ export default class Index extends wepy.page {
 
     //跳到卡片页面（端午）
     routerCardDw() {
+      let type=`CardDw`;
       wx.navigateTo({
-        url: `/appletsA/pages/details/duanwu`
+        url: `/appletsB/pages/text/text?type=${type}`
       });
     },
 

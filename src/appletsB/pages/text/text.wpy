@@ -16,7 +16,7 @@
 
     <view class="test_less">
       <text>留言</text>
-      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="我爱你" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;" value="{{textarea.msg}}" />
+      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;" value="{{textarea.msg}}" />
       <button type="primary" bindtap="sendMsg">发送</button>
     </view>
 
@@ -37,13 +37,38 @@ export default class Index extends wepy.page {
 
   data = {
     textarea: {
-      msg: '', //输入框的内容
-      placeholder: '', //输入框为空时占位符
+      type: ``, //入口页面表示
+      msg: ``, //输入框的内容
+      placeholder: ``, //输入框为空时占位符
       disabled: false, //是否禁用
-      maxlength: 10, //最大输入长度，设置为 -1 的时候不限制最大长度
+      maxlength: 100, //最大输入长度，设置为 -1 的时候不限制最大长度
       focus: false //获取焦点
-    }
+    },
+    text:[],//转化后的文本
   };
+
+  // 处理文本信息
+  RegMsg() {
+    console.log(`文本处理start`)
+    let self = this;
+    let msg = self.textarea.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+    console.log(`文本处理end`)
+  }
 
   computed = {};
 
@@ -54,24 +79,36 @@ export default class Index extends wepy.page {
       // 保存输入框留言
       self.textarea.msg = e.detail.value;
       self.$apply();
-      console.log(e.detail.value);
+      // console.log(e.detail.value);
     },
 
     sendMsg() {
       let self = this;
-      let url = `https://shalou.smallzhiyun.com/prize/index.html`;
       let msg = self.textarea.msg;
-      console.log(msg);
-      wx.navigateTo({
-        url: `/appletsA/pages/web/hello?url=${url}&msg=${msg}`
-      });
+      console.log(self.text);
+
+      // 如果标识为刮刮乐，则跳转刮刮乐留言页面
+      if (self.type == `prize`) {
+        let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+        wx.navigateTo({
+          url: `/appletsA/pages/web/hello?url=${url}&msg=${msg}`
+        });
+      } else if (self.type == `CardDw`) {
+        // 如果表示为端午卡片，跳转端午贺卡页面
+        wx.navigateTo({
+          url: `/appletsA/pages/details/duanwu?msg=${msg}`
+        });
+      }
     }
   };
 
   events = {};
 
-  onLoad() {
+  onLoad(options) {
     let self = this;
+    self.type = options.type;
+    self.$apply();
+    console.log(options);
   }
 }
 </script>

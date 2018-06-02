@@ -3,17 +3,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <text>送你个粽子</text>
-          <text>幸运铺满清新的叶</text>
-          <text>快乐裹成美味的馅</text>
-          <text>闻起来是温馨</text>
-          <text>吃起来是甜蜜</text>
-          <text>咽下去是幸福</text>
-          <text>回味着是美满</text>
-          <text>端午节快乐！</text>
-          <!-- <text>回味着是美满</text> -->
-         
-          <text/>
+		  <view style=""> 
+			  <block wx:for="{{text}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+ 				<view>{{item}}</view>
+			  </block>
+			</view>
         </view>
       </view>
    

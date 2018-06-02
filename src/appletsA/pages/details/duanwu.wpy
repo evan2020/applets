@@ -26,7 +26,7 @@
     color: #66cc99;
     position: relative;
     height: 890rpx;
-    width: 500rpx;
+    width: 300rpx;
     top: 122rpx;
     overflow: hidden;
 
@@ -49,17 +49,11 @@
       <view class="content">
         <!-- 祝福语 -->
         <view class="text">
-          <text>送你个粽子</text>
-          <text>幸运铺满清新的叶</text>
-          <text>快乐裹成美味的馅</text>
-          <text>闻起来是温馨</text>
-          <text>吃起来是甜蜜</text>
-          <text>咽下去是幸福</text>
-          <text>回味着是美满</text>
-          <text>端午节快乐！</text>
-          <!-- <text>回味着是美满</text> -->
-         
-          <text></text>
+		  <view style=""> 
+			  <repeat for="{{text}}" key="index" item="item">
+ 				<view>{{item}}</view>
+			  </repeat>
+			</view>
         </view>
       </view>
    
@@ -76,6 +70,9 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
+    type: ``, //上一级页面类型
+    msg: ``, //输入框的内容
+    text: ``, //格式化之后要展示的内容
     windowHeight: '100%' //手机屏幕高度
   };
 
@@ -83,10 +80,42 @@ export default class Index extends wepy.page {
 
   methods = {};
 
+  // 处理传递过来的信息
+  RegMsg() {
+    let self = this;
+    let msg = self.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+  }
+
   events = {};
 
   onLoad(options) {
     let self = this;
+    self.type = options.type;
+
+    if (options.msg) {
+      self.msg = options.msg;
+    } else {
+      // 默认留言
+      self.msg = `送你个粽子，幸运铺满清新的叶，快乐裹成美味的馅，闻起来是温馨，吃起来是甜蜜，咽下去是幸福，回味着是美满，端午节快乐！`;
+    }
+    self.RegMsg();
+    self.$apply();
+    console.log(`type`, typeof options.text);
 
     //显示转发
     wx.showShareMenu({
@@ -96,13 +125,6 @@ export default class Index extends wepy.page {
     // 获取手机信息
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res.model);
-        console.log(res.pixelRatio);
-        console.log(res.windowWidth);
-        console.log(res.windowHeight);
-        console.log(res.language);
-        console.log(res.version);
-        console.log(res.platform);
         self.windowHeight = res.windowHeight;
       }
     });
@@ -114,8 +136,7 @@ export default class Index extends wepy.page {
     backgroundAudioManager.singer = '罗中旭';
     backgroundAudioManager.coverImgUrl =
       'https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg';
-    backgroundAudioManager.src =
-      'https://om83cysj8.qnssl.com/95173.mp3';
+    backgroundAudioManager.src = 'https://om83cysj8.qnssl.com/95173.mp3';
   }
 
   // 当页面显示的时候
@@ -149,8 +170,7 @@ export default class Index extends wepy.page {
       title: '端午节快乐',
       path: '/appletsA/pages/details/duanwu',
       // 封面图
-      imageUrl:
-        'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
+      imageUrl: 'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
       success: function(res) {
         // 转发成功
       },

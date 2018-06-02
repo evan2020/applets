@@ -112,7 +112,7 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
-
+    // 跳转到关于我们页面
     routerToAbout() {
       let url = `https://shalou.smallzhiyun.com/about/about.html`;
       wx.navigateTo({
@@ -120,6 +120,7 @@ export default class Index extends wepy.page {
       });
     },
 
+    // 跳转到web页面（幸运抽奖）
     routerToWeb() {
       let url = `https://shalou.smallzhiyun.com/lottery/lottery.html`;
       wx.navigateTo({
@@ -127,11 +128,12 @@ export default class Index extends wepy.page {
       });
     },
 
+    // 跳转编辑留言页面（点击刮刮乐）
     routerToPrize() {
       let url = `https://shalou.smallzhiyun.com/prize/index.html`;
-
+      let type=`prize`
       wx.navigateTo({
-        url: `/appletsB/pages/text/text?url=${url}`
+        url: `/appletsB/pages/text/text?url=${url}&type=${type}`
       });
     },
 
@@ -159,9 +161,7 @@ export default class Index extends wepy.page {
 
   events = {};
 
-  onLoad() {
-   
-  }
+  onLoad() {}
   onShow() {
     let self = this;
 
@@ -170,8 +170,6 @@ export default class Index extends wepy.page {
     self.name = userinfo.nickName || `时光`;
     self.avatar = userinfo.avatarUrl || `https://om83cysj8.qnssl.com/323.png`;
     self.loginBtn = userinfo.avatarUrl ? false : true;
-
-  
   }
 }
 </script>
