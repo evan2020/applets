@@ -287,7 +287,15 @@ export default class Index extends wepy.page {
         let user_name = userinfo.nickName || `未登录游客`;
         let user_openid = userinfo.openid || `无openid`;
         let user_gender = userinfo.gender || `无`;
-        console.log(`转发成功`, card_time, user_name, user_openid, user_gender);
+
+        console.log(
+          `转发成功`,
+          card_time,
+          user_name,
+          user_openid,
+          user_gender,
+          self.recordUrl
+        );
         // 自定义事件上报（分享事件）
         wx.reportAnalytics('share_card', {
           card_name: `母亲节贺卡`,
@@ -305,6 +313,7 @@ export default class Index extends wepy.page {
         // 设置方式一
         let apple = {
           send_card: 'Email',
+          recordUrl: self.recordUrl,
           user_name,
           user_gender,
           user_openid,

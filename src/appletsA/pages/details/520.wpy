@@ -306,6 +306,7 @@ export default class Index extends wepy.page {
         // 设置方式一
         let apple = {
           send_card: 'Email',
+          recordUrl: self.recordUrl,
           user_name,
           user_gender,
           user_openid,
