@@ -1,3 +1,74 @@
-.container .test_less {
-  color: pink;
+.container .record {
+  width: 750rpx;
+  background-color: #fff;
+  border: 1px solid pink;
+  margin-top: 30rpx;
+}
+.container .record .title {
+  width: 750rpx;
+  height: 80rpx;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+}
+.container .record .content {
+  width: 750rpx;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .record .content .left {
+  width: 500rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.container .record .content .left .icon {
+  background-color: #fff;
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .record .content .left .icon image {
+  width: 50rpx;
+  height: 50rpx;
+  border: 1px solid pink;
+  border-radius: 50%;
+  padding: 20rpx;
+}
+.container .record .content .left .text {
+  min-width: 400rpx;
+  background-color: #fff;
+  margin-left: 20rpx;
+  font-size: 25rpx;
+}
+.container .record .content .right {
+  height: 50rpx;
+  background-color: #fff;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.container .record .content .right button {
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  color: #fff;
+  background-color: pink;
+  border: none;
+  font-size: 20rpx;
+  margin-right: 10rpx;
+}
+.container .save {
+  width: 750rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .save button {
+  width: 400rpx;
 }
