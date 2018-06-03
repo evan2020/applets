@@ -4,7 +4,7 @@
     <view class="test_less">
       <text style="color:#666">祝福语</text>
       <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}"/>
-      <button type="primary" bindtap="sendMsg">发送</button>
+      <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;"  wx:if="{{recordPath==''}}">发送</button>
     </view>
 
     <view class="record">
@@ -15,23 +15,23 @@
         <view class="left">
           <view class="icon" bindtap="recordStart">
             <image src="https://om83cysj8.qnssl.com/%E8%AF%9D%E7%AD%92.png"  wx:if="{{!recordState}}"/>
-            <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3.png"  wx:else/>
+            <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3.png" wx:else/>
           </view>
             <view class="text">
-              <view>点击图标可播放</view>
-              <view>时长5秒</view>
+              <view>点击图标可录音</view>
+              <view wx:if="{{timeNum!=0}}">时长{{timeNum}}秒</view>
             </view>
         </view>
         
-        <view class="right">
+        <view class="right" wx:if="{{recordPath!=''}}">
           <button bindtap="recordPlay">试听</button>
-          <button>删除</button>
+          <button bindtap="recordDelete">删除</button>
         </view>
       </view>
       
     </view>
     <view class="save">
-        <button>保存</button>
+        <button bindtap="recordSave" type="primary" wx:if="{{recordPath!=''}}">发送</button>
       </view>
 
     

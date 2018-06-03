@@ -1,8 +1,8 @@
 .container .record {
   width: 750rpx;
   background-color: #fff;
-  border: 1px solid pink;
   margin-top: 30rpx;
+  border-bottom: 1px solid #eee;
 }
 .container .record .title {
   width: 750rpx;
@@ -10,6 +10,8 @@
   background-color: #eee;
   display: flex;
   align-items: center;
+  font-size: 25rpx;
+  padding-left: 30rpx;
 }
 .container .record .content {
   width: 750rpx;
@@ -18,6 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
 }
 .container .record .content .left {
   width: 500rpx;

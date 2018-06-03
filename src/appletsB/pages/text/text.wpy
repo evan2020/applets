@@ -6,15 +6,16 @@
   .record {
     width: 750rpx;
     background-color: #fff;
-    border: 1px solid pink;
     margin-top: 30rpx;
+    border-bottom: 1px solid #eee;
     .title {
       width: 750rpx;
       height: 80rpx;
       background-color: #eee;
       display: flex;
       align-items: center;
-      // justify-content: center;
+      font-size: 25rpx;
+      padding-left: 30rpx;
     }
     .content {
       width: 750rpx;
@@ -23,6 +24,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-top: 15rpx;
+      padding-bottom: 15rpx;
       .left {
         width: 500rpx;
         background-color: #fff;
@@ -89,7 +92,7 @@
     <view class="test_less">
       <text style="color:#666">祝福语</text>
       <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}" />
-      <button type="primary" bindtap="sendMsg">发送</button>
+      <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
     </view>
 
     <view class="record">
@@ -103,20 +106,20 @@
             <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3.png" wx:else></image>
           </view>
             <view class="text">
-              <view>点击图标可播放</view>
-              <view>时长5秒</view>
+              <view>点击图标可录音</view>
+              <view wx:if="{{timeNum!=0}}">时长{{timeNum}}秒</view>
             </view>
         </view>
         
-        <view class="right">
-          <button bindtap="recordPlay">试听</button>
-          <button>删除</button>
+        <view class="right" wx:if="{{recordPath!=''}}">
+          <button bindtap="recordPlay" >试听</button>
+          <button bindtap="recordDelete" >删除</button>
         </view>
       </view>
       
     </view>
     <view class="save">
-        <button>保存</button>
+        <button bindtap="recordSave" type="primary" wx:if="{{recordPath!=''}}">发送</button>
       </view>
 
     
@@ -140,7 +143,6 @@ export default class Index extends wepy.page {
       type: ``, //入口页面表示
       msg: ``, //输入框的内容
       placeholder: ``, //输入框为空时占位符
-
       disabled: false, //是否禁用
       maxlength: 100, //最大输入长度，设置为 -1 的时候不限制最大长度
       focus: false //获取焦点
@@ -148,7 +150,9 @@ export default class Index extends wepy.page {
     text: [], //转化后的文本
     router: ``, //留言之后跳转的页面
     recordState: false, //录音状态
-    recordPath: `` //录音临时地址
+    recordPath: ``, //录音临时地址
+    timeNum: 0, //录音时长
+    timer: `` //定时器
   };
 
   watch = {
@@ -158,14 +162,20 @@ export default class Index extends wepy.page {
       const recorderManager = wx.getRecorderManager();
       recorderManager.onStart(() => {
         console.log('recorder start');
+        self.timer = setInterval(function() {
+          self.timeNum = self.timeNum + 1;
+          self.$apply();
+        }, 1000);
       });
       recorderManager.onPause(() => {
         console.log('recorder pause');
       });
       recorderManager.onStop(res => {
         console.log('recorder stop', res);
+        clearInterval(self.timer);
         const { tempFilePath } = res;
         self.recordPath = res.tempFilePath;
+        self.$apply();
       });
       if (newValue) {
         recorderManager.start();
@@ -198,6 +208,42 @@ export default class Index extends wepy.page {
     console.log(`文本处理end`);
   }
 
+  // 知晓云文件保存
+  fileSave(filePath, categoryName) {
+    let self = this;
+    let MyFile = new wx.BaaS.File();
+    let fileParams = { filePath };
+    let metaData = { categoryName };
+
+    MyFile.upload(fileParams, metaData).then(
+      res => {
+        let data = res.data;
+        console.log(res);
+        // 保存录音云文件地址
+        self.recordPath = res.data.path;
+        self.$apply();
+        console.log(self.recordPath);
+        // 跳转页面
+        self.sendMsg();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  // 发送消息
+  sendMsg() {
+    let self = this;
+    let msg = self.textarea.msg;
+    console.log(self.text);
+
+    let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+    wx.navigateTo({
+      url: `${self.router}?url=${url}&msg=${msg}&recordUrl=${self.recordPath}`
+    });
+  }
+
   computed = {};
 
   methods = {
@@ -219,7 +265,7 @@ export default class Index extends wepy.page {
 
       let url = `https://shalou.smallzhiyun.com/prize/index.html`;
       wx.navigateTo({
-        url: `${self.router}?url=${url}&msg=${msg}`
+        url: `${self.router}?url=${url}&msg=${msg}&recordUrl=${self.recordPath}`
       });
     },
 
@@ -234,7 +280,7 @@ export default class Index extends wepy.page {
 
     // 试听
     recordPlay() {
-      let self=this;
+      let self = this;
       console.log(`试听录音`);
       const innerAudioContext = wx.createInnerAudioContext();
       innerAudioContext.autoplay = true;
@@ -246,6 +292,32 @@ export default class Index extends wepy.page {
         console.log(res.errMsg);
         console.log(res.errCode);
       });
+    },
+
+    // 删除录音
+    recordDelete() {
+      console.log(`删除录音`);
+      let self = this;
+      self.recordPath = ``;
+      self.recordState = false;
+      self.timeNum = 0;
+    },
+
+    // 保存录音到服务器
+    recordSave() {
+      let self = this;
+      console.log(self.recordPath.substring(0, 5));
+      if (self.recordPath.substring(0, 5) == `http:`) {
+        console.log(`保存录音`);
+        self.fileSave(self.recordPath, `record`);
+      } else if (self.recordPath.substring(0, 5) == `wxfil`) {
+        console.log(`保存录音`);
+        self.fileSave(self.recordPath, `record`);
+      } else if (self.recordPath.substring(0, 5) == `https`) {
+        self.sendMsg();
+      } else {
+        console.log(`没有录音`);
+      }
     }
   };
 
