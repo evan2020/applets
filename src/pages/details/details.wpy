@@ -30,6 +30,21 @@
   flex-direction: column;
   align-items: center;
 
+  .record {
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    text-align: center;
+    position: absolute;
+    top: 50rpx;
+    left: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .music {
     animation: rotate 3s;
     animation-fill-mode: forwards;
@@ -75,6 +90,11 @@
 </style>
 <template>
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+     <!-- 音频图标 -->
+    <view class="record" bindtap="recordPlay" wx:if="{{recordUrl!=''}}">
+      <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3%E6%9C%BA%20%281%29.png" style="width:50%;height:50%">
+      </image>
+    </view>
     <!-- 音乐图标 -->
     <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
       <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png" style="width:50%;height:50%">
@@ -106,6 +126,7 @@ export default class Index extends wepy.page {
   data = {
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
+    recordUrl: ``, //录音云文件地址
     musicState: `running`, //音乐图片动画是否暂停
     windowHeight: '100%' //手机屏幕高度
   };
@@ -157,6 +178,22 @@ export default class Index extends wepy.page {
         self.musicState = `running`;
       }
       self.$apply();
+    },
+    // 播放录音
+    recordPlay() {
+      console.log(`播放录音`);
+      let self = this;
+
+      const innerAudioContext = wx.createInnerAudioContext();
+      innerAudioContext.autoplay = true;
+      innerAudioContext.src = self.recordUrl;
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放');
+      });
+      innerAudioContext.onError(res => {
+        console.log(res.errMsg);
+        console.log(res.errCode);
+      });
     }
   };
 
@@ -171,6 +208,7 @@ export default class Index extends wepy.page {
       // 默认留言
       self.msg = `父母在，不远游，不在你们身边的时候，希望你们能照顾好自己，无论繁忙劳碌，还是游玩休闲，愿身体健康，愿心想事成，妈妈，在这个特殊的日子，祝你节日快乐`;
     }
+    self.recordUrl = options.recordUrl;
     self.RegMsg();
     self.$apply();
 
@@ -234,7 +272,9 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '妈妈',
-      path: `/pages/details/details?msg=${self.msg}`,
+      path: `/pages/details/details?msg=${self.msg}&recordUrl=${
+        self.recordUrl
+      }`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',

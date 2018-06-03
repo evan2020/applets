@@ -30,6 +30,21 @@
   flex-direction: column;
   align-items: center;
 
+  .record {
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    text-align: center;
+    position: absolute;
+    top: 50rpx;
+    left: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .music {
     animation: rotate 3s;
     animation-fill-mode: forwards;
@@ -49,7 +64,6 @@
     align-items: center;
     justify-content: center;
   }
-
 
   .content {
     font-size: 30rpx;
@@ -76,6 +90,11 @@
 </style>
 <template>
   <view class="details" style="height:{{windowHeight}}px;width:750rpx;">
+     <!-- 音频图标 -->
+    <view class="record" bindtap="recordPlay" wx:if="{{recordUrl!=''}}">
+      <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3%E6%9C%BA%20%281%29.png" style="width:50%;height:50%">
+      </image>
+    </view>
     <!-- 音乐图标 -->
     <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
       <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png" style="width:50%;height:50%">
@@ -107,6 +126,7 @@ export default class Index extends wepy.page {
   data = {
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
+    recordUrl: ``, //录音云文件地址
     musicState: `running`, //音乐图片动画是否暂停
     windowHeight: '100%' //手机屏幕高度
   };
@@ -124,7 +144,7 @@ export default class Index extends wepy.page {
     }
   };
 
-    // 处理传递过来的信息
+  // 处理传递过来的信息
   RegMsg() {
     let self = this;
     let msg = self.msg;
@@ -148,7 +168,7 @@ export default class Index extends wepy.page {
   computed = {};
 
   methods = {
-     // 切换音乐图标旋转
+    // 切换音乐图标旋转
     toggleMusic() {
       let self = this;
       console.log(`toggle`);
@@ -158,6 +178,22 @@ export default class Index extends wepy.page {
         self.musicState = `running`;
       }
       self.$apply();
+    },
+    // 播放录音
+    recordPlay() {
+      console.log(`播放录音`);
+      let self = this;
+
+      const innerAudioContext = wx.createInnerAudioContext();
+      innerAudioContext.autoplay = true;
+      innerAudioContext.src = self.recordUrl;
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放');
+      });
+      innerAudioContext.onError(res => {
+        console.log(res.errMsg);
+        console.log(res.errCode);
+      });
     }
   };
 
@@ -172,6 +208,7 @@ export default class Index extends wepy.page {
       // 默认留言
       self.msg = `小时候，父亲就是颗参天大树，为我们遮风挡雨，长大了，父亲成了本百科全书，为我们答疑解惑，父亲，永远是我们的支柱，爸爸，节日快乐`;
     }
+    self.recordUrl = options.recordUrl;
     self.RegMsg();
     self.$apply();
 
@@ -235,7 +272,9 @@ export default class Index extends wepy.page {
     // 卡片内容
     return {
       title: '父亲节快乐',
-      path: `/appletsA/pages/details/father?msg=${self.msg}`,
+      path: `/appletsA/pages/details/father?msg=${self.msg}&recordUrl=${
+        self.recordUrl
+      }`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/%E7%88%B6%E4%BA%B2%E8%8A%8211_Fotor.jpg',
@@ -255,7 +294,7 @@ export default class Index extends wepy.page {
           user_name,
           card_time,
           user_openid,
-          user_gender,
+          user_gender
         });
         // 设置模板消息通知
         // 向 tableID 为 39006 的数据表插入一条记录
@@ -270,8 +309,8 @@ export default class Index extends wepy.page {
           user_gender,
           user_openid,
           card_time,
-          card_content:self.msg,
-          card_name: '父亲节贺卡',
+          card_content: self.msg,
+          card_name: '父亲节贺卡'
         };
 
         product
@@ -280,7 +319,7 @@ export default class Index extends wepy.page {
           .then(
             res => {
               // success
-              console.log(`创建表成功`)
+              console.log(`创建表成功`);
             },
             err => {
               // err
