@@ -71,6 +71,12 @@
 					"name": "母亲节",
 					"pathName": "pages/details/details",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "404",
+					"pathName": "appletsB/pages/nodata/nodata",
+					"query": ""
 				}
 			]
 		}

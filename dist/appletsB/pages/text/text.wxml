@@ -9,6 +9,24 @@
            <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
         </form> -->
 
+        <!-- 选择信件有效期 -->
+        <view class="timeCheck">
+          <radio-group bindchange="timeCheck">
+            <label>
+              <radio value="unlimited" checked/>无限
+            </label>
+            <label>
+              <radio value="30min"/>30分钟
+            </label>
+            <label>
+              <radio value="3hour"/>3小时
+            </label>
+            <label>
+              <radio value="3day"/>3天
+            </label>
+          </radio-group>
+        </view>
+
       <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;"  wx:if="{{recordPath==''}}">发送</button>
 
     </view>

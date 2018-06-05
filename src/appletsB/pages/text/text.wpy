@@ -2,6 +2,11 @@
 .container {
   // background-color: #eee;
   .test_less {
+    .timeCheck {
+      display: flex;
+      justify-content: center;
+      margin-top:20rpx;
+    }
   }
   .record {
     width: 750rpx;
@@ -97,6 +102,24 @@
            <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
         </form> -->
 
+        <!-- 选择信件有效期 -->
+        <view class="timeCheck">
+          <radio-group bindchange="timeCheck">
+            <label>
+              <radio value="unlimited" checked="checked"/>无限
+            </label>
+            <label>
+              <radio value="30min" />30分钟
+            </label>
+            <label>
+              <radio value="3hour" />3小时
+            </label>
+            <label>
+              <radio value="3day" />3天
+            </label>
+          </radio-group>
+        </view>
+
       <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
 
     </view>
@@ -159,7 +182,8 @@ export default class Index extends wepy.page {
     recordPath: ``, //录音临时地址
     timeNum: 0, //录音时长
     timer: ``, //定时器
-    formId: `` //模板id
+    formId: ``, //模板id
+    timeCheckVal: `unlimited` //选择信件有效期(默认无限制)
   };
 
   watch = {
@@ -275,7 +299,7 @@ export default class Index extends wepy.page {
         wx.navigateTo({
           url: `${self.router}?url=${url}&msg=${msg}&recordUrl=${
             self.recordPath
-          }&formId=${self.formId}`
+          }&formId=${self.formId}&timeCheckVal=${self.timeCheckVal}`
         });
       }, 300);
     },
@@ -378,6 +402,15 @@ export default class Index extends wepy.page {
           console.log(`测试formid err回调`);
         }
       );
+    },
+
+    // 选择信件有效期
+    timeCheck(e) {
+      let self = this;
+      console.log(`选择信件有效期`);
+      console.log(e.detail.value);
+      self.timeCheckVal = e.detail.value;
+      self.$apply();
     }
   };
 

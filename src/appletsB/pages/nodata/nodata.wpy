@@ -1,0 +1,38 @@
+<style lang="less">
+.container {
+}
+</style>
+<template>
+  <view class="container">
+    已过期
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '404'
+  };
+  components = {};
+
+  data = {
+
+  };
+
+  watch = {};
+
+  computed = {};
+
+  methods = {};
+
+  events = {};
+
+  onLoad(options) {
+    let self = this;
+
+
+  }
+}
+</script>

@@ -129,7 +129,9 @@ export default class Index extends wepy.page {
     text: ``, //格式化之后要展示的内容
     recordUrl: ``, //录音云文件地址
     musicState: `running`, //音乐图片动画是否暂停
-    windowHeight: '100%' //手机屏幕高度
+    windowHeight: '100%', //手机屏幕高度
+    timeCheckVal: 'unlimited', //信件有效期
+    timeNow: '' //转发的时间戳
   };
 
   watch = {
@@ -204,6 +206,44 @@ export default class Index extends wepy.page {
     let self = this;
     console.log(options);
 
+    let timeCheckNow = new Date();
+    let timeNow = timeCheckNow.getTime();
+    console.log(options);
+    if (options.timeNow) {
+      let nowTime = parseInt(options.timeNow);
+      if (options.timeCheckVal == 'unlimited') {
+        timeNow = 1;
+      } else if (options.timeCheckVal == '30min') {
+        console.log('nowTime', nowTime);
+        console.log(typeof nowTime);
+        nowTime = nowTime + 1000 * 60 * 30;
+        // nowTime = nowTime + 1000 * 30;
+        console.log('nowTime', nowTime);
+      } else if (options.timeCheckVal == '3hour') {
+        nowTime = nowTime + 1000 * 60 * 60 * 3;
+      } else if (options.timeCheckVal == '3day') {
+        nowTime = nowTime + 1000 * 60 * 60 * 24 * 3;
+      }
+      // 如果信件在有效期内
+      if (nowTime > timeNow) {
+        // 设置背景音乐
+        const backgroundAudioManager = wx.getBackgroundAudioManager();
+        backgroundAudioManager.title = '听妈妈的话';
+        backgroundAudioManager.epname = '';
+        backgroundAudioManager.singer = '周杰伦';
+        backgroundAudioManager.coverImgUrl =
+          'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000';
+        backgroundAudioManager.src =
+          'https://om83cysj8.qnssl.com/%E5%90%AC%E5%A6%88%E5%A6%88%E7%9A%84%E8%AF%9D_%E9%93%83%E5%A3%B0%E4%B9%8B%E5%AE%B6cnwav.mp3';
+      } else {
+        // 如果信件不在有效期内，就弹出过期提示，并隐藏信件内容
+        wx.redirectTo({
+          url: `/appletsB/pages/nodata/nodata`
+        });
+      }
+    } else {
+    }
+
     if (options.msg) {
       self.msg = options.msg;
     } else {
@@ -211,6 +251,7 @@ export default class Index extends wepy.page {
       self.msg = `父母在，不远游，不在你们身边的时候，希望你们能照顾好自己，无论繁忙劳碌，还是游玩休闲，愿身体健康，愿心想事成，妈妈，在这个特殊的日子，祝你节日快乐`;
     }
     self.recordUrl = options.recordUrl;
+    self.timeCheckVal = options.timeCheckVal;
     self.RegMsg();
     self.$apply();
 
@@ -232,16 +273,6 @@ export default class Index extends wepy.page {
         self.windowHeight = res.windowHeight;
       }
     });
-
-    // 设置背景音乐
-    const backgroundAudioManager = wx.getBackgroundAudioManager();
-    backgroundAudioManager.title = '听妈妈的话';
-    backgroundAudioManager.epname = '';
-    backgroundAudioManager.singer = '周杰伦';
-    backgroundAudioManager.coverImgUrl =
-      'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000';
-    backgroundAudioManager.src =
-      'https://om83cysj8.qnssl.com/%E5%90%AC%E5%A6%88%E5%A6%88%E7%9A%84%E8%AF%9D_%E9%93%83%E5%A3%B0%E4%B9%8B%E5%AE%B6cnwav.mp3';
   }
 
   // 当页面显示的时候
@@ -267,6 +298,12 @@ export default class Index extends wepy.page {
   // 设置分享卡片
   onShareAppMessage(res) {
     let self = this;
+    let timeCheckNow = new Date();
+    let timeNow = timeCheckNow.getTime();
+    self.timeNow = timeNow;
+    self.$apply();
+    console.log(`timeNow ${timeNow}`);
+    console.log(typeof timeNow);
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log('res.target', res.target);
@@ -276,7 +313,7 @@ export default class Index extends wepy.page {
       title: '妈妈',
       path: `/pages/details/details?msg=${self.msg}&recordUrl=${
         self.recordUrl
-      }`,
+      }&timeCheckVal=${self.timeCheckVal}&timeNow=${self.timeNow}`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',
