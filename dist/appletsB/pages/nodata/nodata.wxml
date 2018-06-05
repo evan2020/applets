@@ -1,4 +1,5 @@
 
   <view class="container">
-    已过期
+    <text>已过期</text>
+    <image src="https://om83cysj8.qnssl.com/pac-man-game-over.jpg"/>
   </view>
