@@ -92,7 +92,10 @@
     <view class="test_less">
       <text style="color:#666">祝福语</text>
       <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}" />
-      <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
+      <form bindsubmit="letterModule" report-submit="true">
+           <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
+        </form>
+      <!-- <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button> -->
     </view>
 
     <view class="record">
@@ -152,7 +155,8 @@ export default class Index extends wepy.page {
     recordState: false, //录音状态
     recordPath: ``, //录音临时地址
     timeNum: 0, //录音时长
-    timer: `` //定时器
+    timer: ``, //定时器
+    formId: `` //模板id
   };
 
   watch = {
@@ -263,10 +267,14 @@ export default class Index extends wepy.page {
       let msg = self.textarea.msg;
       console.log(self.text);
 
-      let url = `https://shalou.smallzhiyun.com/prize/index.html`;
-      wx.navigateTo({
-        url: `${self.router}?url=${url}&msg=${msg}&recordUrl=${self.recordPath}`
-      });
+      setTimeout(() => {
+        let url = `https://shalou.smallzhiyun.com/prize/index.html`;
+        wx.navigateTo({
+          url: `${self.router}?url=${url}&msg=${msg}&recordUrl=${
+            self.recordPath
+          }&formId=${self.formId}`
+        });
+      }, 300);
     },
 
     //开始录音
@@ -318,6 +326,59 @@ export default class Index extends wepy.page {
       } else {
         console.log(`没有录音`);
       }
+    },
+
+    // 模板触发事件
+    letterModule(e) {
+      let self = this;
+      console.log(`模板事件`);
+      console.log(e.detail.formId);
+      self.formId = e.detail.formId;
+      self.$apply();
+      console.log(self.formId);
+      // 先上报formId,然后创建表，触发Trigger
+      wx.BaaS.wxReportTicket(e.detail.formId).then(res=>{
+        console.log(`测试formid success回调`)
+        let card_time = new Date();
+      
+      // 设置模板消息通知
+      // 向 tableID 为 39006 的数据表插入一条记录
+      let tableID = 39006;
+      let Product = new wx.BaaS.TableObject(tableID);
+      let product = Product.create();
+
+      // 设置方式一
+      let apple = {
+        // 信件已查收
+        send_card: `sendCard`,
+        card_name: `母亲节贺卡`,
+        state: `已接收`,
+        directions: `沙漏的时光`,
+        note: "card_time"
+      };
+
+      product
+        .set(apple)
+        .save()
+        .then(
+          res => {
+            // success
+            console.log(`创建表成功`);
+            // console.log(res);
+            console.log(e.detail.formId);
+            // wx.BaaS.wxReportTicket(e.detail.formId);
+            // console.log("提交formId");
+          },
+          err => {
+            // err
+          }
+        );
+      },err=>{
+        console.log(`测试formid err回调`)
+        
+      });
+
+      
     }
   };
 

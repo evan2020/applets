@@ -65,6 +65,12 @@
 					"name": "儿童节贺卡",
 					"pathName": "appletsA/pages/details/child",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "母亲节",
+					"pathName": "pages/details/details",
+					"query": ""
 				}
 			]
 		}

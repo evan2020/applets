@@ -4,7 +4,10 @@
     <view class="test_less">
       <text style="color:#666">祝福语</text>
       <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}"/>
-      <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;"  wx:if="{{recordPath==''}}">发送</button>
+      <form bindsubmit="letterModule" report-submit="true">
+           <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;"  wx:if="{{recordPath==''}}">发送</button>
+        </form>
+      <!-- <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button> -->
     </view>
 
     <view class="record">

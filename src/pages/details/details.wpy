@@ -110,6 +110,7 @@
           </view>
         </view>
       </view>
+      
    
   </view>
 </template>
@@ -127,6 +128,7 @@ export default class Index extends wepy.page {
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
     recordUrl: ``, //录音云文件地址
+    formId: ``, //信件的模板消息id
     musicState: `running`, //音乐图片动画是否暂停
     windowHeight: '100%' //手机屏幕高度
   };
@@ -201,6 +203,7 @@ export default class Index extends wepy.page {
 
   onLoad(options) {
     let self = this;
+    console.log(options);
 
     if (options.msg) {
       self.msg = options.msg;
@@ -209,6 +212,46 @@ export default class Index extends wepy.page {
       self.msg = `父母在，不远游，不在你们身边的时候，希望你们能照顾好自己，无论繁忙劳碌，还是游玩休闲，愿身体健康，愿心想事成，妈妈，在这个特殊的日子，祝你节日快乐`;
     }
     self.recordUrl = options.recordUrl;
+    self.formId = options.formId;
+    if (options.type == `sendLetter`) {
+      console.log(`确认收到来信`);
+      let card_time = new Date();
+      
+      // 设置模板消息通知
+      // 向 tableID 为 39006 的数据表插入一条记录
+      let tableID = 39006;
+      let Product = new wx.BaaS.TableObject(tableID);
+      let product = Product.create();
+
+      // 设置方式一
+      let apple = {
+        // 信件已查收
+        send_card: `sendCard`,
+        card_name: `母亲节贺卡`,
+        state: `已接收`,
+        directions: `沙漏的时光`,
+        note: card_time
+      };
+
+      product
+        .set(apple)
+        .save()
+        .then(
+          res => {
+            // success
+            console.log(`创建表成功`);
+            console.log(res);
+            console.log(options.formId);
+            wx.BaaS.wxReportTicket(options.formId);
+            console.log("提交formId");
+          },
+          err => {
+            // err
+          }
+        );
+    } else {
+      console.log(`没有收到来信`);
+    }
     self.RegMsg();
     self.$apply();
 
@@ -267,19 +310,21 @@ export default class Index extends wepy.page {
     let self = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target);
+      console.log('res.target', res.target);
     }
     // 卡片内容
     return {
       title: '妈妈',
       path: `/pages/details/details?msg=${self.msg}&recordUrl=${
         self.recordUrl
-      }`,
+      }&formId=${self.formId}&type=sendLetter`,
       // 封面图
       imageUrl:
         'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg',
       success: function(res) {
         // 转发成功
+        console.log('self.formId', self.formId);
+        // self.sendModule();
         let card_time = new Date();
         // 获取用户存储的用户信息
         let userinfo = wx.BaaS.storage.get(`userinfo`);
@@ -320,6 +365,12 @@ export default class Index extends wepy.page {
           card_time,
           card_content: self.msg,
           card_name: '母亲节贺卡'
+
+          // 信件已查收
+          // send_card: `sendCard`,
+          // state: `已接收`,
+          // directions: `沙漏的时光`,
+          // note: `点击查看发送内容`
         };
 
         product
