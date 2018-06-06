@@ -14,8 +14,10 @@ export default class extends wepy.app {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
+    // 分包加载
     subPackages: [
       {
+        // A包
         root: 'appletsA',
         pages: [
           'pages/index/index', //首页
@@ -23,6 +25,7 @@ export default class extends wepy.app {
           'pages/details/520', //520贺卡
           'pages/details/duanwu', //端午节贺卡
           'pages/details/father', //父亲节贺卡
+          `pages/details/mather`, //母亲节贺卡
           'pages/details/iloveyou', //七夕贺卡
           'pages/details/child', //儿童节贺卡
           'pages/details/birthday', //生日贺卡
@@ -32,11 +35,18 @@ export default class extends wepy.app {
           'pages/web/hello' //H5页面
         ]
       },
+      // B包
       {
         root: 'appletsB',
-        pages: ['pages/index/index', 'pages/text/text', 'pages/nodata/nodata']
+        pages: [
+          'pages/index/index', //首页
+          'pages/text/text', //留言编辑
+          'pages/nodata/nodata' //过期提示页面
+        ]
       }
     ],
+
+    // 底部栏
     tabBar: {
       list: [
         {
@@ -53,20 +63,16 @@ export default class extends wepy.app {
           iconPath: '/imgs/tab/email4.png',
           selectedIconPath: '/imgs/tab/email4.png'
         }
-        // {
-        //   pagePath: 'pages/log',
-        //   text: '日志',
-        //   iconPath: '/icon/flash.png',
-        //   selectedIconPath: '/icon/flash.png'
-        // }
       ]
     }
   };
 
+  // 全局数据
   globalData = {
     userInfo: null
   };
 
+  // 自定义数据上报
   diyEvant() {
     let self = this;
     console.log(`自定义数据上报`);
@@ -125,7 +131,7 @@ export default class extends wepy.app {
       }
     });
     setTimeout(() => {
-      console.log('sys', SystemInfo);
+      // console.log('sys', SystemInfo);
       wx.reportAnalytics('user_info_one', {
         brand: SystemInfo.brand,
         model: SystemInfo.model,

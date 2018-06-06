@@ -1,0 +1,26 @@
+
+  <!-- 页面 -->
+  <view class="details" style="height:{{windowHeight}}px;background-image: url('{{dataUrl.bgImageUrl}}');">
+     <!-- 音频图标 -->
+    <view class="record" bindtap="recordPlay"  wx:if="{{recordUrl!=''}}">
+      <image src="{{dataUrl.recordIconUrl}}">
+      </image>
+    </view>
+    <!-- 音乐图标 -->
+    <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
+      <image src="{{dataUrl.musicIconUrl}}">
+      </image>
+    </view>
+    <!-- 祝福内容 -->
+      <view class="content">
+        <!-- 祝福语 -->
+        <view class="text">
+          <view style=""> 
+            <block wx:for="{{text}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            <view>{{item}}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+   
+  </view>

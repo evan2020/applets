@@ -147,7 +147,7 @@ export default class Index extends wepy.page {
       // 转发标题
       title: `妈妈`,
       // 转发打开路径
-      path: `/pages/details/details`,
+      path: `/appletsA/pages/details/mather`,
       // 封面图
       coverImageUrl: 'https://om83cysj8.qnssl.com/ChMkJ1bKxYWIckH4AAF86HwJVvYAALHXAP96qIAAX0A162.jpg'
     },
@@ -454,6 +454,8 @@ export default class Index extends wepy.page {
       // 来自页面内转发按钮
       console.log(res.target);
     }
+
+
     // 卡片内容
     return {
       title: self.share.title,
