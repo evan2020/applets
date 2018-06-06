@@ -20,7 +20,6 @@
 // 页面
 .details {
   width: 750rpx;
-  background-image: url('https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -98,15 +97,15 @@
 </style>
 <template>
   <!-- 页面 -->
-  <view class="details" style="height:{{windowHeight}}px;">
+  <view class="details" style="height:{{windowHeight}}px;background-image: url('{{dataUrl.bgImageUrl}}');">
      <!-- 音频图标 -->
     <view class="record" bindtap="recordPlay" wx:if="{{recordUrl!=''}}">
-      <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3%E6%9C%BA%20%281%29.png" >
+      <image src="{{dataUrl.recordIconUrl}}" >
       </image>
     </view>
     <!-- 音乐图标 -->
     <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
-      <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png">
+      <image src="{{dataUrl.musicIconUrl}}">
       </image>
     </view>
     <!-- 祝福内容 -->
@@ -134,13 +133,55 @@ export default class Index extends wepy.page {
   components = {};
 
   data = {
+    // 图片URl数据
+    dataUrl: {
+      // 背景图片
+      bgImageUrl: `https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg`,
+      // 音频图标（播放录音）
+      recordIconUrl: `https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3%E6%9C%BA%20%281%29.png`,
+      // 音乐图标
+      musicIconUrl: `https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png`
+    },
+    // 转发数据
+    share: {
+      // 转发标题
+      title: `端午节快乐`,
+      // 转发打开路径
+      path: `/appletsA/pages/details/duanwu`,
+      // 封面图
+      coverImageUrl: 'https://om83cysj8.qnssl.com/121F2NC-0.jpg'
+    },
+    // 用户数据
+    userInfo: {
+      // 用户名称
+      user_name: ``,
+      // 用户性别
+      user_gender: ``,
+      // 用户openid
+      user_openid: ``
+    },
+    // 背景音乐数据
+    bgMusicData: {
+      // 专辑名
+      epname: ``,
+      // 音乐名
+      title: `忆端午`,
+      // 歌手
+      singer: `罗中旭`,
+      // 封面图
+      coverImgUrl: `https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg`,
+      // 歌曲地址
+      src: `https://om83cysj8.qnssl.com/95173.mp3`
+    },
     msg: ``, //输入框的内容
     text: ``, //格式化之后要展示的内容
     recordUrl: ``, //录音云文件地址
     musicState: `running`, //音乐图片动画是否暂停
     windowHeight: '100%', //手机屏幕高度
     timeCheckVal: 'unlimited', //信件有效期
-    timeNow: '' //转发的时间戳
+    timeNow: ``, //转发的时间戳
+    defaultMsg: `送你个粽子，幸运铺满清新的叶，快乐裹成美味的馅，闻起来是温馨，吃起来是甜蜜，咽下去是幸福，回味着是美满，端午节快乐！`,
+    noDataUrl:`/appletsB/pages/nodata/nodata`,//收信限制提示页面
   };
 
   watch = {
@@ -188,61 +229,86 @@ export default class Index extends wepy.page {
     }
   };
 
-  // 处理传递过来的信息
-  RegMsg() {
+  // 获取用户信息
+  getUserInfo() {
+    console.log(`获取用户信息`);
     let self = this;
-    let msg = self.msg;
-    let testArr = [];
-    // 遇到以下符号立即截取内容分段
-    let reg = /[，|,|.|。|、|？|；|;|/]/g;
-    let index = ``;
-    let start = 0;
-    while ((index = reg.exec(msg) != null)) {
-      // 截取两个符合之间的文字，分段放入数组
-      testArr.push(msg.substring(start, reg.lastIndex));
-      // 检测并改变当前符号索引
-      start = reg.lastIndex;
-    }
-    // 获取最后一段文字
-    testArr.push(msg.substring(start, msg.length));
-    self.text = testArr;
+    // 获取用户存储的用户信息
+    let userinfo = wx.BaaS.storage.get(`userinfo`);
+    // 设置头像和名称
+    self.userInfo.user_name = userinfo.nickName || `未登录游客`;
+    self.userInfo.user_openid = userinfo.openid || `无openid`;
+    self.userInfo.user_gender = userinfo.gender || `无`;
+  }
+
+  // 自定义数据上报
+  report() {
+    console.log(`自定义数据上报`);
+    let self = this;
+    let card_time = new Date();
+    // 自定义事件上报（分享事件）
+    wx.reportAnalytics('share_card', {
+      card_name: self.share.title,
+      user_name: self.userInfo.user_name,
+      card_time: card_time,
+      user_openid: self.userInfo.user_openid,
+      user_gender: self.userInfo.user_gender
+    });
+  }
+
+  // 分享成功邮件通知
+  shareEmailNotice() {
+    console.log(`分享成功邮件通知`);
+    let self = this;
+
+    // 获取当前时间
+    let card_time = new Date();
+
+    // 向 tableID 为 39006 的数据表插入一条记录
+    let tableID = 39006;
+    let Product = new wx.BaaS.TableObject(tableID);
+    let product = Product.create();
+
+    // 设置数据
+    let apple = {
+      send_card: 'Email',
+      recordUrl: self.recordUrl,
+      user_name: self.userInfo.user_name,
+      user_gender: self.userInfo.user_gender,
+      user_openid: self.userInfo.user_openid,
+      card_time: card_time,
+      card_content: self.msg,
+      card_name: self.share.title
+    };
+
+    product
+      .set(apple)
+      .save()
+      .then(
+        res => {
+          // success
+          console.log(`创建表成功`);
+        },
+        err => {
+          // err
+        }
+      );
+  }
+
+  // 获取当前时间戳
+  getTimeNow() {
+    console.log(`获取当前时间戳`);
+    let self = this;
+    let timeCheckNow = new Date();
+    let timeNow = timeCheckNow.getTime();
+    self.timeNow = timeNow;
     self.$apply();
   }
 
-  // 设置背景音乐
-  setBgMusic() {
-    console.log(`设置背景音乐`);
-
-    // 设置背景音乐
-    const backgroundAudioManager = wx.getBackgroundAudioManager();
-    backgroundAudioManager.title = '忆端午';
-    backgroundAudioManager.epname = '';
-    backgroundAudioManager.singer = '罗中旭';
-    backgroundAudioManager.coverImgUrl =
-      'https://om83cysj8.qnssl.com/fpic1467_Fotor.jpg';
-    backgroundAudioManager.src = 'https://om83cysj8.qnssl.com/95173.mp3';
-  }
-
-  events = {};
-
-  onLoad(options) {
+  // 设置收信倒计时限制
+  countdown(options) {
+    console.log(`设定倒计时收信限制`);
     let self = this;
-
-    // 打印当前页面参数
-    console.log(`打印当前页面参数`, options);
-
-    // 如果有留言就同步留言，没有就设置默认留言
-    if (options.msg) {
-      self.msg = options.msg;
-    } else {
-      // 默认留言
-      self.msg = `送你个粽子，幸运铺满清新的叶，快乐裹成美味的馅，闻起来是温馨，吃起来是甜蜜，咽下去是幸福，回味着是美满，端午节快乐！`;
-    }
-    // 格式化留言数据
-    self.RegMsg();
-    // 获取参数
-    self.recordUrl = options.recordUrl;
-    self.timeCheckVal = options.timeCheckVal;
 
     // 获取当前时间
     let timeCheckNow = new Date();
@@ -268,7 +334,7 @@ export default class Index extends wepy.page {
       } else {
         // 如果信件不在有效期内，就弹出过期提示，并隐藏信件内容
         wx.redirectTo({
-          url: `/appletsB/pages/nodata/nodata`
+          url: `${self.noDataUrl}`
         });
       }
     } else {
@@ -276,6 +342,71 @@ export default class Index extends wepy.page {
       self.setBgMusic();
     }
 
+    self.$apply();
+  }
+
+  // 处理传递过来的信息
+  RegMsg(options) {
+    let self = this;
+
+    // 如果有留言就同步留言，没有就设置默认留言
+    if (options.msg) {
+      self.msg = options.msg;
+    } else {
+      // 默认留言
+      self.msg = self.defaultMsg;
+    }
+
+    let msg = self.msg;
+    let testArr = [];
+    // 遇到以下符号立即截取内容分段
+    let reg = /[，|,|.|。|、|？|；|;|/]/g;
+    let index = ``;
+    let start = 0;
+    while ((index = reg.exec(msg) != null)) {
+      // 截取两个符合之间的文字，分段放入数组
+      testArr.push(msg.substring(start, reg.lastIndex));
+      // 检测并改变当前符号索引
+      start = reg.lastIndex;
+    }
+    // 获取最后一段文字
+    testArr.push(msg.substring(start, msg.length));
+    self.text = testArr;
+    self.$apply();
+  }
+
+  // 设置背景音乐
+  setBgMusic() {
+    console.log(`设置背景音乐`);
+    let self=this;
+    // 设置背景音乐
+    const backgroundAudioManager = wx.getBackgroundAudioManager();
+    backgroundAudioManager.title = self.bgMusicData.title;
+    backgroundAudioManager.epname = self.bgMusicData.epname;
+    backgroundAudioManager.singer = self.bgMusicData.singer;
+    backgroundAudioManager.coverImgUrl = self.bgMusicData.coverImgUrl;
+    backgroundAudioManager.src = self.bgMusicData.src;
+  }
+
+  events = {};
+
+  onLoad(options) {
+    let self = this;
+
+    // 打印当前页面参数
+    console.log(`打印当前页面参数`, options);
+
+    // 获取参数
+    self.recordUrl = options.recordUrl;
+    self.timeCheckVal = options.timeCheckVal;
+
+    // 倒计时限制
+    self.countdown(options);
+
+    // 格式化留言数据
+    self.RegMsg(options);
+
+    // 脏检查数据
     self.$apply();
 
     //显示转发
@@ -316,10 +447,7 @@ export default class Index extends wepy.page {
     let self = this;
 
     // 获取当前时间戳
-    let timeCheckNow = new Date();
-    let timeNow = timeCheckNow.getTime();
-    self.timeNow = timeNow;
-    self.$apply();
+    self.getTimeNow();
 
     //  判断是否是点击按钮转发
     if (res.from === 'button') {
@@ -328,64 +456,27 @@ export default class Index extends wepy.page {
     }
     // 卡片内容
     return {
-      title: '端午节快乐',
-      path: `/appletsA/pages/details/duanwu?msg=${self.msg}&recordUrl=${
+      title: self.share.title,
+      path: `${self.share.path}?msg=${self.msg}&recordUrl=${
         self.recordUrl
       }&timeCheckVal=${self.timeCheckVal}&timeNow=${self.timeNow}`,
       // 封面图
-      imageUrl: 'https://om83cysj8.qnssl.com/121F2NC-0.jpg',
+      imageUrl: self.share.coverImageUrl,
+
+      // 转发成功
       success: function(res) {
-        // 转发成功
-        let card_time = new Date();
-        // 获取用户存储的用户信息
-        let userinfo = wx.BaaS.storage.get(`userinfo`);
-        // 设置头像和名称
-        let user_name = userinfo.nickName || `未登录游客`;
-        let user_openid = userinfo.openid || `无openid`;
-        let user_gender = userinfo.gender || `无`;
+        // 获取用户信息
+        self.getUserInfo();
 
-        // 自定义事件上报（分享事件）
-        wx.reportAnalytics('share_card', {
-          card_name: `端午节贺卡`,
-          user_name,
-          card_time,
-          user_openid,
-          user_gender
-        });
+        // 自定义事件上报
+        self.report();
 
-        // 设置模板消息（邮件）通知
-        // 向 tableID 为 39006 的数据表插入一条记录
-        let tableID = 39006;
-        let Product = new wx.BaaS.TableObject(tableID);
-        let product = Product.create();
-
-        // 设置方式一
-        let apple = {
-          send_card: 'Email',
-          recordUrl: self.recordUrl,
-          user_name,
-          user_gender,
-          user_openid,
-          card_time,
-          card_content: self.msg,
-          card_name: '端午节贺卡'
-        };
-
-        product
-          .set(apple)
-          .save()
-          .then(
-            res => {
-              // success
-              console.log(`创建表成功`);
-            },
-            err => {
-              // err
-            }
-          );
+        // 分享成功邮件通知
+        self.shareEmailNotice();
       },
       fail: function(res) {
         // 转发失败
+        console.log(`转发失败`);
       }
     };
   }

@@ -1,14 +1,14 @@
 
   <!-- 页面 -->
-  <view class="details" style="height:{{windowHeight}}px;">
+  <view class="details" style="height:{{windowHeight}}px;background-image: url('{{dataUrl.bgImageUrl}}');">
      <!-- 音频图标 -->
     <view class="record" bindtap="recordPlay"  wx:if="{{recordUrl!=''}}">
-      <image src="https://om83cysj8.qnssl.com/%E5%BD%95%E9%9F%B3%E6%9C%BA%20%281%29.png">
+      <image src="{{dataUrl.recordIconUrl}}">
       </image>
     </view>
     <!-- 音乐图标 -->
     <view style="animation-play-state:{{musicState}}" class="music" bindtap="toggleMusic">
-      <image src="https://om83cysj8.qnssl.com/Note_de_musique_music_256px_525366_easyicon.net.png">
+      <image src="{{dataUrl.musicIconUrl}}">
       </image>
     </view>
     <!-- 祝福内容 -->
