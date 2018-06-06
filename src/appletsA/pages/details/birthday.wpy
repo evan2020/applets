@@ -74,7 +74,7 @@
 
   .content {
     font-size: 30rpx;
-    color: #66cc99;
+    color: #f08080;
     position: relative;
     height: 890rpx;
     width: 300rpx;
