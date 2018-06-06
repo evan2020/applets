@@ -1,18 +1,35 @@
 <style lang="less">
 .container {
-  // background-color: #eee;
+  // 留言区域
   .test_less {
+    // 标题
+    text {
+      color: #666;
+    }
+    // 文本域
+    textarea {
+      height: 400rpx;
+      width: 750rpx;
+      border: 1px solid #eee;
+      margin-top: 20rpx;
+      padding: 10rpx 10rpx;
+      color: #999;
+    }
+    // 选择信件有效期
     .timeCheck {
       display: flex;
       justify-content: center;
-      margin-top:20rpx;
+      margin-top: 20rpx;
     }
   }
+
+  // 录音区域
   .record {
     width: 750rpx;
     background-color: #fff;
     margin-top: 30rpx;
     border-bottom: 1px solid #eee;
+    // 标题
     .title {
       width: 750rpx;
       height: 80rpx;
@@ -22,6 +39,7 @@
       font-size: 25rpx;
       padding-left: 30rpx;
     }
+    // 内容区域
     .content {
       width: 750rpx;
       height: 100rpx;
@@ -31,6 +49,7 @@
       justify-content: space-between;
       padding-top: 15rpx;
       padding-bottom: 15rpx;
+      // 左侧录音
       .left {
         width: 500rpx;
         background-color: #fff;
@@ -59,7 +78,7 @@
           font-size: 25rpx;
         }
       }
-
+      // 右侧操作
       .right {
         height: 50rpx;
         background-color: #fff;
@@ -79,6 +98,8 @@
       }
     }
   }
+
+  // 点击发送（含录音）
   .save {
     width: 750rpx;
     margin-top: 20rpx;
@@ -92,43 +113,49 @@
 }
 </style>
 <template>
+
+  <!-- 页面 -->
   <view class="container">
 
+    <!-- 留言区域 -->
     <view class="test_less">
-      <text style="color:#666">祝福语</text>
-      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}" />
 
-      <!-- <form bindsubmit="letterModule" report-submit="true">
-           <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
-        </form> -->
+      <text>祝福语</text>
 
-        <!-- 选择信件有效期 -->
-        <view class="timeCheck">
-          <radio-group bindchange="timeCheck">
-            <label>
-              <radio value="unlimited" checked="checked"/>无限
-            </label>
-            <label>
-              <radio value="30min" />30分钟
-            </label>
-            <label>
-              <radio value="3hour" />3小时
-            </label>
-            <label>
-              <radio value="3day" />3天
-            </label>
-          </radio-group>
-        </view>
+      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}"  placeholder="留言" style="" value="{{textarea.msg}}" />
 
+      <!-- 选择信件有效期 -->
+      <view class="timeCheck">
+        <radio-group bindchange="timeCheck">
+          <label>
+            <radio value="unlimited" checked="checked"/>无限
+          </label>
+          <label>
+            <radio value="30min" />30分钟
+          </label>
+          <label>
+            <radio value="3hour" />3小时
+          </label>
+          <label>
+            <radio value="3day" />3天
+          </label>
+        </radio-group>
+      </view>
+
+    <!-- 点击发送留言 -->
       <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
 
     </view>
 
+    <!-- 录音区域 -->
     <view class="record">
+      <!-- 标题区域 -->
       <view class="title">
         <text>添加语音祝福</text>
       </view>
+      <!-- 内容区域 -->
       <view class="content">
+        <!-- 左侧录音 -->
         <view class="left">
           <view class="icon" bindtap="recordStart">
             <image src="https://om83cysj8.qnssl.com/%E8%AF%9D%E7%AD%92.png" wx:if="{{!recordState}}"></image>
@@ -140,13 +167,17 @@
             </view>
         </view>
         
+        <!-- 右侧操作 -->
         <view class="right" wx:if="{{recordPath!=''}}">
           <button bindtap="recordPlay" >试听</button>
           <button bindtap="recordDelete" >删除</button>
         </view>
+
       </view>
       
     </view>
+
+    <!-- 点击发送（含录音） -->
     <view class="save">
         <button bindtap="recordSave" type="primary" wx:if="{{recordPath!=''}}">发送</button>
       </view>
@@ -187,10 +218,14 @@ export default class Index extends wepy.page {
   };
 
   watch = {
+    // 监听录音状态
     recordState(newValue, oldValue) {
       let self = this;
       console.log(`recordState value: ${oldValue} -> ${newValue}`);
+      // 获取音频设置
       const recorderManager = wx.getRecorderManager();
+
+      // 当录音开始
       recorderManager.onStart(() => {
         console.log('recorder start');
         self.timer = setInterval(function() {
@@ -198,9 +233,13 @@ export default class Index extends wepy.page {
           self.$apply();
         }, 1000);
       });
+
+      // 当录音暂停
       recorderManager.onPause(() => {
         console.log('recorder pause');
       });
+
+      // 当录音结束
       recorderManager.onStop(res => {
         console.log('recorder stop', res);
         clearInterval(self.timer);
@@ -208,6 +247,8 @@ export default class Index extends wepy.page {
         self.recordPath = res.tempFilePath;
         self.$apply();
       });
+
+      // 设置录音开始和结束
       if (newValue) {
         recorderManager.start();
       } else {

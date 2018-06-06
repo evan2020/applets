@@ -1,3 +1,14 @@
+.container .test_less text {
+  color: #666;
+}
+.container .test_less textarea {
+  height: 400rpx;
+  width: 750rpx;
+  border: 1px solid #eee;
+  margin-top: 20rpx;
+  padding: 10rpx 10rpx;
+  color: #999;
+}
 .container .test_less .timeCheck {
   display: flex;
   justify-content: center;

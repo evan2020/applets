@@ -1,41 +1,47 @@
 
+
+  <!-- 页面 -->
   <view class="container">
 
+    <!-- 留言区域 -->
     <view class="test_less">
-      <text style="color:#666">祝福语</text>
-      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="留言" style="height:400rpx;width:750rpx;border:1px solid #eee;margin-top:20rpx;padding:10rpx 10rpx;color:#999" value="{{textarea.msg}}"/>
 
-      <!-- <form bindsubmit="letterModule" report-submit="true">
-           <button formType="submit" type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;" wx:if="{{recordPath==''}}">发送</button>
-        </form> -->
+      <text>祝福语</text>
 
-        <!-- 选择信件有效期 -->
-        <view class="timeCheck">
-          <radio-group bindchange="timeCheck">
-            <label>
-              <radio value="unlimited" checked/>无限
-            </label>
-            <label>
-              <radio value="30min"/>30分钟
-            </label>
-            <label>
-              <radio value="3hour"/>3小时
-            </label>
-            <label>
-              <radio value="3day"/>3天
-            </label>
-          </radio-group>
-        </view>
+      <textarea bindblur="getMsg" bindinput="getMsg" maxlength="{{textarea.maxlength}}" placeholder="留言" style="" value="{{textarea.msg}}"/>
 
+      <!-- 选择信件有效期 -->
+      <view class="timeCheck">
+        <radio-group bindchange="timeCheck">
+          <label>
+            <radio value="unlimited" checked/>无限
+          </label>
+          <label>
+            <radio value="30min"/>30分钟
+          </label>
+          <label>
+            <radio value="3hour"/>3小时
+          </label>
+          <label>
+            <radio value="3day"/>3天
+          </label>
+        </radio-group>
+      </view>
+
+    <!-- 点击发送留言 -->
       <button type="primary" bindtap="sendMsg" style="width:400rpx;margin-top:20rpx;"  wx:if="{{recordPath==''}}">发送</button>
 
     </view>
 
+    <!-- 录音区域 -->
     <view class="record">
+      <!-- 标题区域 -->
       <view class="title">
         <text>添加语音祝福</text>
       </view>
+      <!-- 内容区域 -->
       <view class="content">
+        <!-- 左侧录音 -->
         <view class="left">
           <view class="icon" bindtap="recordStart">
             <image src="https://om83cysj8.qnssl.com/%E8%AF%9D%E7%AD%92.png"  wx:if="{{!recordState}}"/>
@@ -47,13 +53,17 @@
             </view>
         </view>
         
+        <!-- 右侧操作 -->
         <view class="right" wx:if="{{recordPath!=''}}">
           <button bindtap="recordPlay">试听</button>
           <button bindtap="recordDelete">删除</button>
         </view>
+
       </view>
       
     </view>
+
+    <!-- 点击发送（含录音） -->
     <view class="save">
         <button bindtap="recordSave" type="primary" wx:if="{{recordPath!=''}}">发送</button>
       </view>
