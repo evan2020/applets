@@ -3,8 +3,8 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
-		"postcss": true,
-		"minified": true,
+		"postcss": false,
+		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
@@ -76,6 +76,12 @@
 					"id": -1,
 					"name": "404",
 					"pathName": "appletsB/pages/nodata/nodata",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "倒计时卡片",
+					"pathName": "appletsA/pages/timeCard/card",
 					"query": ""
 				}
 			]

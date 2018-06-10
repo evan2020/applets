@@ -32,7 +32,10 @@ export default class extends wepy.app {
           'pages/details/remember', //纪念日
           'pages/video/index', //毕业季
           'pages/video/drawing', //手绘
-          'pages/web/hello' //H5页面
+          'pages/web/hello', //H5页面
+
+          `pages/timeCard/card`,//倒计时卡片页面
+          
         ]
       },
       // B包

@@ -200,18 +200,16 @@ export default class Index extends wepy.page {
       console.log(e);
       let index = e.currentTarget.dataset.index;
       let url = `https://shalou.smallzhiyun.com/express/index.html`;
-      if(index==0){
-        console.log(`点击第一张`)
-      }else if(index==1){
-        console.log(`点击第二张`)
-        
-      }else if(index==2){
-        console.log(`点击第三张`)
-        
+      if (index == 0) {
+        console.log(`点击第一张`);
+      } else if (index == 1) {
+        console.log(`点击第二张`);
+      } else if (index == 2) {
+        console.log(`点击第三张`);
       }
-      // wx.navigateTo({
-      //   url: `/appletsA/pages/web/hello?url=${url}`
-      // });
+      wx.navigateTo({
+        url: `/appletsA/pages/timeCard/card?url=${url}`
+      });
     },
 
     //跳到卡片页面（手绘）

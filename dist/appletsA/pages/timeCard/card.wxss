@@ -1,0 +1,70 @@
+.container swiper {
+  background-image: url('https://om83cysj8.qnssl.com/u=240262204,959106383&fm=27&gp=0.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.container .dateCard {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .dateCard .oneCard,
+.container .dateCard .twoCard,
+.container .dateCard .threeCard {
+  width: 600rpx;
+  height: 450rpx;
+  position: relative;
+  top: -200rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .dateCard .oneCard .header,
+.container .dateCard .twoCard .header,
+.container .dateCard .threeCard .header {
+  width: 100%;
+  height: 75rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00bfff;
+}
+.container .dateCard .oneCard .header .title,
+.container .dateCard .twoCard .header .title,
+.container .dateCard .threeCard .header .title {
+  font-size: 35rpx;
+  color: #fff;
+}
+.container .dateCard .oneCard .body,
+.container .dateCard .twoCard .body,
+.container .dateCard .threeCard .body {
+  width: 100%;
+  height: 300rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .dateCard .oneCard .body .text,
+.container .dateCard .twoCard .body .text,
+.container .dateCard .threeCard .body .text {
+  font-size: 80rpx;
+  color: #333;
+}
+.container .dateCard .oneCard .footer,
+.container .dateCard .twoCard .footer,
+.container .dateCard .threeCard .footer {
+  width: 100%;
+  height: 75rpx;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .dateCard .oneCard .footer .text,
+.container .dateCard .twoCard .footer .text,
+.container .dateCard .threeCard .footer .text {
+  font-size: 20rpx;
+  color: #999;
+}
