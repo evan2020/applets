@@ -123,7 +123,7 @@ export default class Index extends wepy.page {
     useInfo: ``,
     loginBtn: true,
     avatar: `https://om83cysj8.qnssl.com/323.png`,
-    name: `时光`
+    name: `时光`,
   };
 
   computed = {};

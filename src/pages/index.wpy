@@ -312,6 +312,7 @@ export default class Index extends wepy.page {
         console.log(res);
         self.imgUrlArr = res.data.banner;
         self.cardImgArr = res.data.cardImgArr;
+        console.log(JSON.parse(res.data.testJson));
         self.$apply();
       },
       err => {

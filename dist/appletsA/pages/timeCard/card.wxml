@@ -1,57 +1,25 @@
 
   <view class="container">
 	<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper" style="height:{{windowHeight}}px;">
-		<swiper-item>
+    <block wx:for="{{dataTimeArr}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <swiper-item>
 			<!-- 日期卡片 -->
 			<view class="dateCard" style="height:{{windowHeight}}px;">
 				<view class="oneCard">
 					<view class="header">
-						<text class="title">距离端午节还有</text>
+						<text class="title">{{item.title}}</text>
 					</view>
 					<view class="body">
-						<text class="text">{{dayNum_duanwu}}天</text>
+						<text class="text">{{item.dayNum}}天</text>
 					</view>
 					<view class="slider"/>
 					<view class="footer">
-						<text class="text">快来买粽子吧</text>
+						<text class="text">{{item.footerText}}{{item.percentage==0?"":item.percentage}}</text>
 					</view>
 				</view>
 			</view>
 		</swiper-item>
-		<swiper-item>
-			<!-- 日期卡片 -->
-			<view class="dateCard" style="height:{{windowHeight}}px;">
-				<view class="twoCard">
-					<view class="header">
-						<text class="title">距离父亲节还有</text>
-					</view>
-					<view class="body">
-						<text class="text">{{dayNum_father}}天</text>
-					</view>
-					<view class="slider"/>
-					<view class="footer">
-						<text class="text">礼物准备好了吗？</text>
-					</view>
-				</view>
-			</view>
-		</swiper-item>
-		<swiper-item>
-			<!-- 日期卡片 -->
-			<view class="dateCard" style="height:{{windowHeight}}px;">
-				<view class="threeCard">
-					<view class="header">
-						<text class="title">距离7月还有</text>
-					</view>
-					<view class="body">
-						<text class="text">{{dayNum_last}}天</text>
-					</view>
-					<view class="slider"/>
-					<view class="footer">
-						<text class="text">这个月已经过了{{percentage}}%</text>
-					</view>
-				</view>
-			</view>
-		</swiper-item>
-	
+    </block>
+		
 	  </swiper>
   </view>
