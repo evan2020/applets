@@ -112,10 +112,12 @@ export default class Index extends wepy.page {
     // 转化后的数组数据（日期）
     dataTimeArr: [
       {
-        title:``,
-        dayNum:0,
-        footerText:``,
-        percentage:0,
+        title: ``,
+        startDate:``,
+        timeDate:`June 19, 2018`,
+        dayNum: 0,
+        footerText: ``,
+        percentage: 0
       }
     ]
   };
@@ -139,11 +141,11 @@ export default class Index extends wepy.page {
     if (!Number.isNaN(percentage)) {
       self.timedata[name].percentage = (percentage * 100).toFixed(2) + `%`;
     }
-  };
+  }
 
   // 获取节日信息
-  getDateinfo(){
-    let self=this;
+  getDateinfo() {
+    let self = this;
     // 获取banner和card图片数据
     let tableID = 36571;
     let recordID = '5afb2d4d65c0ad65354c6f63';
