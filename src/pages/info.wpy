@@ -53,7 +53,6 @@
          <view class="zan-cell" wx:if="{{loginBtn}}">
             <view class="zan-cell__icon zan-icon zan-icon-like-o" style="color:#38f;"></view>
             <view class="zan-cell__bd"> 
-              <!-- <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">点击登录</button> -->
               <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" plain="true" style="height:100%;display:block;border:none;line-height:29px;font-size:29rpx;padding-left:0;position:relative;width:750rpx;text-align:left;z-index:999;">点击登录</button>
               </view>
             <view class="zan-cell__ft"></view>
@@ -86,6 +85,16 @@
             <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">关于我们</button></view>
             <view class="zan-cell__ft"></view>
         </view>
+
+         <view class="zan-cell" >
+            <view class="zan-cell__icon zan-icon zan-icon-edit" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> 
+              <button open-type="feedback" plain="true" style="height:100%;display:block;border:none;line-height:29px;font-size:29rpx;padding-left:0;position:relative;width:750rpx;text-align:left;z-index:999;">提交反馈</button>
+              </view>
+            <view class="zan-cell__ft"></view>
+        </view>
+
+        
 
         
 
