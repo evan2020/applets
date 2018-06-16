@@ -128,7 +128,7 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '端午'
+    navigationBarTitleText: '情人节'
   };
   components = {};
 
