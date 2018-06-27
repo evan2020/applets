@@ -58,6 +58,12 @@
             <view class="zan-cell__ft"></view>
         </view>
 
+        
+         <view class="zan-cell" bindtap="routerConstellation">
+            <view class="zan-cell__icon zan-icon zan-icon-gold-coin" style="color:#38f;"></view>
+            <view class="zan-cell__bd"> <button  plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">星座祝福</button></view>
+            <view class="zan-cell__ft"></view>
+        </view>
     
 
         <view class="zan-cell" bindtap="routerToWeb">
@@ -134,6 +140,13 @@ export default class Index extends wepy.page {
       let url = `https://shalou.smallzhiyun.com/about/about.html`;
       wx.navigateTo({
         url: `/appletsA/pages/web/hello?url=${url}`
+      });
+    },
+
+    // 跳转到星座图片页面
+    routerConstellation(){
+      wx.navigateTo({
+        url: `/appletsA/pages/stars/index`
       });
     },
 

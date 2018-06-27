@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -83,6 +83,17 @@
 					"name": "倒计时卡片",
 					"pathName": "appletsA/pages/timeCard/card",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "星座页面",
+					"pathName": "appletsA/pages/stars/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "星座canvas",
+					"pathName": "appletsA/pages/stars/canvas"
 				}
 			]
 		}

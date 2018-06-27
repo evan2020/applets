@@ -31,6 +31,12 @@
             <view class="zan-cell__ft"/>
         </view>
 
+        
+         <view class="zan-cell" bindtap="routerConstellation">
+            <view class="zan-cell__icon zan-icon zan-icon-gold-coin" style="color:#38f;"/>
+            <view class="zan-cell__bd"> <button plain="true" style="height:80%;display:inline;border:none;line-height:29px;font-size:29rpx;padding-left:0;">星座祝福</button></view>
+            <view class="zan-cell__ft"/>
+        </view>
     
 
         <view class="zan-cell" bindtap="routerToWeb">

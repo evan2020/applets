@@ -1,0 +1,5 @@
+
+<view class="container">
+	<image src="https://om83cysj8.qnssl.com/8a375eb72ddc5d26815c68bbaf7cb3bd094f4dde118893-aOItaa_fw658.jpeg" style="width:{{windowWidth}}px;height:{{windowHeight}}px"/>
+	<!-- <image src="https://om83cysj8.qnssl.com/0f2679e99023f138769554c49a62ef4c5ec9b45def3bf-IzvaWL_fw658.jpeg" style="width:{{windowWidth}}px;height:{{windowHeight}}px"></image> -->
+</view>

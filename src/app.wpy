@@ -35,6 +35,8 @@ export default class extends wepy.app {
           'pages/web/hello', //H5页面
 
           `pages/timeCard/card`,//倒计时卡片页面
+          `pages/stars/index`,//星座页面
+          `pages/stars/canvas`,//星座生成图片页面
           
         ]
       },

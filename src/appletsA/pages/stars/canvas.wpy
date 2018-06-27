@@ -1,0 +1,63 @@
+<style>
+.container {
+	width:750rpx;
+}
+</style>
+<template>
+<view class="container" >
+	<image src="https://om83cysj8.qnssl.com/8a375eb72ddc5d26815c68bbaf7cb3bd094f4dde118893-aOItaa_fw658.jpeg" style="width:{{windowWidth}}px;height:{{windowHeight}}px"></image>
+	<!-- <image src="https://om83cysj8.qnssl.com/0f2679e99023f138769554c49a62ef4c5ec9b45def3bf-IzvaWL_fw658.jpeg" style="width:{{windowWidth}}px;height:{{windowHeight}}px"></image> -->
+</view>
+	
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '星座canvas'
+  };
+  components = {};
+
+  data = {
+	  windowHeight:``,//屏幕高度
+	  windowWidth:``,//屏幕宽度
+  };
+
+  computed = {};
+
+  methods = {
+    //跳到卡片页面（手绘）
+    routerStars() {
+      wx.navigateTo({
+        url: `/appletsA/pages/video/drawing`
+      });
+    }
+  };
+
+  onLoad() {
+    let self = this;
+
+	//显示转发按钮
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+
+	// 获取手机信息
+    wx.getSystemInfo({
+      success: function(res) {
+        self.windowHeight = res.windowHeight;
+        self.windowWidth = res.windowWidth;
+      }
+    });
+  }
+
+  onShow() {
+    let self = this;
+  }
+  onReachBottom() {
+    console.log('到底了');
+  }
+}
+</script>
+

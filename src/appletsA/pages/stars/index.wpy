@@ -1,0 +1,206 @@
+<style lang="scss">
+@import '../../../components/zancss/btn.scss';
+@import '../../../components/zancss/icon.scss';
+@import '../../../components/zancss/tag.scss';
+.container {
+  .swiper {
+    height: 400rpx;
+    .slide-image {
+      width: 750rpx;
+      height: 100%;
+    }
+  }
+
+  .nineBox {
+    display: flex;
+    flex-direction: column;
+    .hot_title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      .hot_text {
+        margin-left: 20rpx;
+        color: pink;
+        font-size: 35rpx;
+      }
+    }
+    .row {
+      width: 100%;
+      min-height: 500rpx;
+      display: flex;
+      flex-direction: row;
+      margin-top: 10rpx;
+
+      view {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &.left {
+          padding-left: 30rpx;
+          padding-right: 15rpx;
+        }
+        &.right {
+          padding-left: 15rpx;
+          padding-right: 30rpx;
+        }
+
+        image {
+          width: 100%;
+          //   height:100%;
+          box-shadow: 4px 2px 2px #d6d6d6;
+          // height: 100rpx;
+        }
+        text {
+          margin-top: 10rpx;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+</style>
+<template>
+  <view class="container">
+
+	<view class='nineBox'>
+
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
+      <view class="hot_text">热门星座</view>
+    </view>
+
+     <view class='row'>
+
+      <view bindtap='position' class="right" bindtap="routerStars">
+      <image src='https://om83cysj8.qnssl.com/6b1bd9ac9f2d548e2acc720fdc78617c6277107d4f820-1VnKD7_fw658.jpeg' ></image>
+      <text>巨蟹座</text>
+      </view>
+
+      
+      <view bindtap='position' class="right" bindtap="routerCardFather">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg' ></image>
+      <text>双子座</text>
+      </view>
+      
+      
+
+    </view>
+
+    <view class='row'>
+
+      <view bindtap='position' class="left" bindtap="routerCardVideo">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg'></image>
+      <text>双子座</text>
+      </view>
+
+       <view bindtap='position' class="left" bindtap="routerCardDrawing">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg'></image>
+      <text>双子座</text>
+      </view>
+
+    </view>
+
+
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-hot"  style="color: #ff4343;"></view>
+      <view class="hot_text">星座大全</view>
+    </view>
+
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCardBirthday">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg' ></image>
+      <text>双子座</text>
+      </view>
+
+      <view bindtap='position' class="right" bindtap="routerCardRemember">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg' ></image>
+      <text>双子座</text>
+      </view>
+    </view>
+
+
+    <view class="hot_title">
+      <view class="zan-icon zan-icon-receive-gift"  style="color: #ff4343;"></view>
+      <view class="hot_text">常用星座</view>
+    </view>
+
+    <view class='row'>
+      <view bindtap='position' class="left" bindtap="routerCardMom">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg' ></image>
+      <text>双子座</text>
+      </view>
+
+      
+
+      <view bindtap='position' class="left" bindtap="routerCardChild">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg'></image>
+      <text>双子座</text>
+      </view>
+
+    </view>
+
+    <view class='row'>
+
+      <view bindtap='position' class="left" bindtap="routerCard520">
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg' ></image>
+      <text>双子座</text>
+      </view>
+      
+
+      <view bindtap='position' class="right" bindtap="routerCardLove"> 
+      <image src='https://om83cysj8.qnssl.com/312d4d0991eabfa203a7acf643f466b3a31636b34fd2c-ZTihy5_fw658.jpeg'></image>
+      <text>双子座</text>
+      </view>
+    </view>
+
+  </view>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '星座物语'
+  };
+  components = {};
+
+  data = {};
+
+  computed = {};
+
+  methods = {
+    //跳到星座canvas页面
+    routerStars() {
+      wx.navigateTo({
+        url: `/appletsA/pages/stars/canvas`
+      });
+    }
+  };
+
+  events = {};
+
+  onLoad() {
+    let self = this;
+
+    //显示转发按钮
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+  }
+
+  onShow() {
+    let self = this;
+  }
+  onReachBottom() {
+    console.log('到底了');
+  }
+}
+</script>
+
